@@ -8,8 +8,6 @@ const TYPE = "PLAYER"
 
 func _ready():
 	change_state(IDLE_NAKED)
-	VariableSingleton.player = self
-
 func _process(delta):
 	if new_anim != anim:
 		anim = new_anim
