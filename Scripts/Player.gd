@@ -25,6 +25,7 @@ func _hit(dir):
 	hitstun = 1
 	knock_dir = (position - dir).normalized()
 	knock_dir.y = -4
+	change_state(DAMAGED)
 
 func _shoot():
 	new_javelin = javelin.instance()

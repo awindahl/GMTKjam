@@ -6,7 +6,9 @@ const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_SLIDE_STOP = 25.0
 
 # animation states
-enum {IDLE_NAKED, IDLE_ARMED, RUN_NAKED, RUN_ARMED, ATTACK_DOWN, ATTACK_UP, ATTACK_FORWARD, PUSH, DAMAGED, CROUCH, CROUCH_ATTACK, PICKUP, JUMP_NAKED, JUMP_ARMED, ATTACK_JAVELIN}
+enum {IDLE_NAKED, IDLE_ARMED, RUN_NAKED, RUN_ARMED, ATTACK_DOWN, ATTACK_UP, ATTACK_FORWARD, 
+		PUSH, DAMAGED, CROUCH, CROUCH_ATTACK, PICKUP, JUMP_NAKED, JUMP_ARMED, ATTACK_JAVELIN, 
+		ATTACK_BOMB}
 
 # shared variables
 var linear_vel = Vector2()
@@ -17,7 +19,8 @@ var anim
 var new_anim
 var attacking
 var attack_timer = 0
-var isShooting = false
+var ammo = 1
+var bombs = 0
 
 # player variables
 export var WALK_SPEED = 45
@@ -58,6 +61,8 @@ func change_state(new_state):
 			new_anim = 'jump_armed'
 		ATTACK_JAVELIN:
 			new_anim = 'attack_javelin'
+		ATTACK_BOMB:
+			new_anim = 'attack_bomb'
 
 # Non-newtonian gravity function based on a gravity vector
 func gravity_loop(delta):
@@ -110,10 +115,15 @@ func control_loop():
 				if !DOWN and attack_timer == 0:
 					linear_vel.x *= WALK_SPEED
 				
-				if Input.is_action_just_pressed("attack2") and attack_timer == 0:
+				if Input.is_action_just_pressed("attack2") and attack_timer == 0 and ammo > 0:
+					ammo -= 1
 					attack_timer = 20
 					change_state(ATTACK_JAVELIN)
-					isShooting = true
+				
+				if Input.is_action_just_pressed("bomb") and attack_timer == 0 and bombs > 0:
+					bombs -= 1
+					attack_timer = 20
+					change_state(ATTACK_BOMB)
 				
 				""" Makes sure the player can only jump while standing on the floor
 					also changes the state to IDLE to make sure the current animation
@@ -179,4 +189,4 @@ func control_loop():
 		move_and_slide(knock_dir*WALK_SPEED)
 		if knock_dir.y > 3:
 			knock_dir.x = 0
-			change_state(DAMAGED)
+		

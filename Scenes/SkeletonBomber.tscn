@@ -109,7 +109,7 @@ scale_random = 1.0
 color = Color( 0.682353, 0.682353, 0.682353, 1 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 10.83, 17.16 )
+extents = Vector2( 11.5795, 17.0279 )
 
 [node name="SkeletonBomber" type="KinematicBody2D"]
 collision_layer = 17
