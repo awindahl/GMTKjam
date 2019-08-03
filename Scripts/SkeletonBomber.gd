@@ -65,7 +65,7 @@ func rand():
 
 func _vision():
 	for body in $Vision.get_overlapping_bodies():
-		if body is Player:
+		if body.get("TYPE") == "PLAYER":
 			linearVel = (position - body.position).normalized() * -1
 			isSeeingPlayer = true
 			$Point.visible = true
@@ -77,6 +77,6 @@ func die():
 	queue_free()
 
 func _on_Hitbox_body_entered(body):
-	if body is Player:
+	if body.get("TYPE") == "PLAYER":
 		#body.get_node("HurtSound").play()
 		body._hit(position)

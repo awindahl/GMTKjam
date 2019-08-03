@@ -17,7 +17,7 @@ var anim
 var new_anim
 var attacking
 var attack_timer = 0
-var isSeeingPlayer = false
+var isShooting = false
 
 # player variables
 export var WALK_SPEED = 45
@@ -113,6 +113,7 @@ func control_loop():
 				if Input.is_action_just_pressed("attack2") and attack_timer == 0:
 					attack_timer = 20
 					change_state(ATTACK_JAVELIN)
+					isShooting = true
 				
 				""" Makes sure the player can only jump while standing on the floor
 					also changes the state to IDLE to make sure the current animation

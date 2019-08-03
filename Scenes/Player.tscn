@@ -182,7 +182,7 @@ tracks/7/keys = {
 "values": [ Vector2( 5.05293, 7.88812 ), Vector2( 3.953, 7.888 ) ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=4]
 resource_name = "attack_javelin"
 length = 0.4
 tracks/0/type = "value"
@@ -269,8 +269,22 @@ tracks/6/keys = {
 "update": 0,
 "values": [ Vector2( 5.05293, 7.88812 ), Vector2( 3.953, 7.888 ) ]
 }
+tracks/7/type = "method"
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "_shoot"
+} ]
+}
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -356,8 +370,7 @@ tracks/6/keys = {
 "values": [ Vector2( 4, 6.318 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "crouch"
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -419,8 +432,7 @@ tracks/4/keys = {
 "values": [ Vector2( 4.30303, 7.88812 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "crouch_attack"
+[sub_resource type="Animation" id=7]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -495,8 +507,7 @@ tracks/5/keys = {
 "values": [ Vector2( 4, 8 ), Vector2( 4.30303, 7.88812 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "damaged"
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -570,7 +581,7 @@ tracks/5/keys = {
 "values": [ Vector2( 4, 8 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -644,7 +655,7 @@ tracks/5/keys = {
 "values": [ Vector2( 4, 8 ), Vector2( 4, 8 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -718,8 +729,7 @@ tracks/5/keys = {
 "values": [ Vector2( 4, 8 ), Vector2( 4, 8 ) ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "jump_armed"
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -793,8 +803,7 @@ tracks/5/keys = {
 "values": [ Vector2( 4, 8 ) ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "jump_naked"
+[sub_resource type="Animation" id=12]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -856,8 +865,7 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "pickup"
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -931,8 +939,7 @@ tracks/5/keys = {
 "values": [ Vector2( 4, 8 ) ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "push"
+[sub_resource type="Animation" id=14]
 length = 0.8
 loop = true
 step = 0.4
@@ -1009,7 +1016,7 @@ tracks/5/keys = {
 "values": [ Vector2( 5, 8 ), Vector2( 5, 8 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=15]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -1085,7 +1092,7 @@ tracks/5/keys = {
 "values": [ Vector2( 4, 8 ), Vector2( 4, 8 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=16]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -1161,19 +1168,19 @@ tracks/5/keys = {
 "values": [ Vector2( 4, 8 ), Vector2( 4, 8 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=17]
 extents = Vector2( 3, 3.69143 )
 
-[sub_resource type="RectangleShape2D" id=17]
+[sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 1.18994, 2.37764 )
 
-[sub_resource type="RectangleShape2D" id=18]
+[sub_resource type="RectangleShape2D" id=19]
 extents = Vector2( 2.47933, 1.24685 )
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 7.18572, 1.24626 )
 
-[sub_resource type="RectangleShape2D" id=20]
+[sub_resource type="RectangleShape2D" id=21]
 extents = Vector2( 5, 9 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -1206,26 +1213,26 @@ current = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack_down = SubResource( 2 )
 anims/attack_forward = SubResource( 3 )
-anims/attack_javelin = SubResource( 21 )
-anims/attack_up = SubResource( 4 )
-anims/crouch = SubResource( 5 )
-anims/crouch_attack = SubResource( 6 )
-anims/damaged = SubResource( 7 )
-anims/idle_armed = SubResource( 8 )
-anims/idle_naked = SubResource( 9 )
-anims/jump_armed = SubResource( 10 )
-anims/jump_naked = SubResource( 11 )
-anims/pickup = SubResource( 12 )
-anims/push = SubResource( 13 )
-anims/run_armed = SubResource( 14 )
-anims/run_naked = SubResource( 15 )
+anims/attack_javelin = SubResource( 4 )
+anims/attack_up = SubResource( 5 )
+anims/crouch = SubResource( 6 )
+anims/crouch_attack = SubResource( 7 )
+anims/damaged = SubResource( 8 )
+anims/idle_armed = SubResource( 9 )
+anims/idle_naked = SubResource( 10 )
+anims/jump_armed = SubResource( 11 )
+anims/jump_naked = SubResource( 12 )
+anims/pickup = SubResource( 13 )
+anims/push = SubResource( 14 )
+anims/run_armed = SubResource( 15 )
+anims/run_naked = SubResource( 16 )
 
 [node name="attack_down_hitbox" type="Area2D" parent="."]
 position = Vector2( 0, 6 )
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_down_hitbox"]
-shape = SubResource( 16 )
+shape = SubResource( 17 )
 
 [node name="attack_up_hitbox" type="Area2D" parent="."]
 visible = false
@@ -1235,7 +1242,7 @@ monitoring = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_up_hitbox"]
 visible = false
 position = Vector2( 1, 0 )
-shape = SubResource( 17 )
+shape = SubResource( 18 )
 
 [node name="attack_forward_hitbox" type="Area2D" parent="."]
 visible = false
@@ -1244,7 +1251,7 @@ monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_forward_hitbox"]
 visible = false
-shape = SubResource( 18 )
+shape = SubResource( 19 )
 
 [node name="attack_crouch_hitbox" type="Area2D" parent="."]
 editor/display_folded = true
@@ -1253,7 +1260,7 @@ position = Vector2( 6, 3 )
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_crouch_hitbox"]
-shape = SubResource( 19 )
+shape = SubResource( 20 )
 
 [node name="hitbox" type="Area2D" parent="."]
 editor/display_folded = true
@@ -1263,7 +1270,7 @@ collision_layer = 9
 collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
-shape = SubResource( 20 )
+shape = SubResource( 21 )
 
 [node name="FloorCheck" type="RayCast2D" parent="."]
 position = Vector2( -1, 0 )

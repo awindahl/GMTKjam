@@ -36,6 +36,7 @@ shape = SubResource( 1 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( -240, -50 )
 scale = Vector2( 4, 4 )
+armed = true
 
 [node name="SkeletonBomber" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, -90 )

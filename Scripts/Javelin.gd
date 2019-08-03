@@ -1,13 +1,24 @@
-extends KinematicBody2D
+extends Area2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+const SPEED = 10
+var forward_dir = Vector2()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _process(delta):
+	var player = get_parent()
+	
+	if player.get_node("Sprite").flip_h:
+		print("left")
+		forward_dir = Vector2(-1,0)
+	elif not player.get_node("Sprite").flip_h:
+		forward_dir = Vector2(1,0)
+		print("right")
+		
+	global_translate(forward_dir * SPEED)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_TimeToLive_timeout():
+	queue_free()
+
+func _on_Javelin_body_entered(body):
+	if body is Enemy:
+		pass
+		#body.hit()
