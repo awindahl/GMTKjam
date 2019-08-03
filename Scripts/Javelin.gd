@@ -3,8 +3,12 @@ extends Area2D
 const SPEED = 10
 var forward_dir = Vector2()
 
+onready var player = get_parent().get_node("Player")
+
+func _ready():
+	position = player.position
+
 func _process(delta):
-	var player = get_parent()
 	
 	if player.get_node("Sprite").flip_h:
 		forward_dir = Vector2(-1,0)

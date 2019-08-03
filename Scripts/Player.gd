@@ -7,6 +7,9 @@ onready var AnimationPlayer = get_node("AnimationPlayer")
 const TYPE = "PLAYER"
 
 onready var javelin = preload("res://Scenes/Javelin.tscn")
+onready var bomb = preload("res://Scenes/Bomb.tscn")
+
+var new_bomb
 var new_javelin
 
 func _ready():
@@ -29,4 +32,8 @@ func _hit(dir):
 
 func _shoot():
 	new_javelin = javelin.instance()
-	add_child(new_javelin)
+	get_parent().add_child(new_javelin)
+	
+func _bomb():
+	new_bomb = bomb.instance()
+	get_parent().add_child(new_bomb)

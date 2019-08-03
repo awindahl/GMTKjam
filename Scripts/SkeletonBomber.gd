@@ -8,6 +8,7 @@ const RIGHT = Vector2(1,0)
 var linearVel = Vector2(0,0)
 var knockVel = Vector2(0,0)
 var isSeeingPlayer = false
+onready var bombDrop = preload("res://Scenes/BombPickup.tscn")
 
 export var SPEED = 70
 
@@ -58,7 +59,7 @@ func _process(delta):
 	
 	print($RayCast2D.rotation_degrees)
 	
-	if knockVel.y > 2.5 and not alive:
+	if knockVel.y > 3 and not alive:
 		die()
 
 func rand():
@@ -81,6 +82,7 @@ func _vision():
 			$Point.visible = true
 		
 func die():
+	get_parent().add_child(bombDrop.instance())
 	queue_free()
 
 func _on_Hitbox_body_entered(body):
@@ -93,6 +95,6 @@ func _on_Hitbox_body_entered(body):
 		linearVel.x = 0 
 
 func hit(hit_pos):
-	knockVel = (hit_pos - position).normalized()
+	knockVel = (hit_pos - position).normalized() * -1
 	knockVel.y -= 3
 	alive = false
