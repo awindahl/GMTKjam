@@ -16,6 +16,7 @@ var moveTimerLength = 60
 var playerPos
 var player
 onready var myBody = get_node("CollisionShape2D")
+onready var animationPlayer = get_node("AnimationPlayer")
 var alive = true
 
 func _ready():
@@ -27,7 +28,11 @@ func _process(delta):
 	
 	_vision()
 	
-	print(linearVel)
+	if $RayCast2D.is_colliding() and alive:
+		alive = false
+		animationPlayer.play("Skele_explode")
+		linearVel.x = 0 
+		
 	# gravity
 	linearVel.y = 4
 	
@@ -42,16 +47,12 @@ func _process(delta):
 	if alive:
 		if linearVel.x < 2:
 			$Sprite.flip_h = true
+			$RayCast2D.rotation_degrees = 180
 		else:
 			$Sprite.flip_h = false
+			$RayCast2D.rotation_degrees = 0
 		
 		move_and_slide(linearVel * SPEED)
-	
-
-func _on_HitBox_body_entered(body):
-	if body is Player:
-			body.get_node("HurtSound").play()
-			body._hit()
 
 func rand():
 	var d = randi() % 2 + 1
@@ -71,3 +72,11 @@ func _vision():
 		else:
 			isSeeingPlayer = false
 			$Point.visible = true
+		
+func die():
+	queue_free()
+
+func _on_Hitbox_body_entered(body):
+	if body is Player:
+		#body.get_node("HurtSound").play()
+		body._hit(position)

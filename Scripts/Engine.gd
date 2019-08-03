@@ -6,7 +6,7 @@ const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_SLIDE_STOP = 25.0
 
 # animation states
-enum {IDLE_NAKED, IDLE_ARMED, RUN_NAKED, RUN_ARMED, ATTACK_DOWN, ATTACK_UP, ATTACK_FORWARD, PUSH, DAMAGED, CROUCH, CROUCH_ATTACK, PICKUP, JUMP_NAKED, JUMP_ARMED}
+enum {IDLE_NAKED, IDLE_ARMED, RUN_NAKED, RUN_ARMED, ATTACK_DOWN, ATTACK_UP, ATTACK_FORWARD, PUSH, DAMAGED, CROUCH, CROUCH_ATTACK, PICKUP, JUMP_NAKED, JUMP_ARMED, ATTACK_JAVELIN}
 
 # shared variables
 var linear_vel = Vector2()
@@ -56,10 +56,13 @@ func change_state(new_state):
 			new_anim = 'jump_naked'
 		JUMP_ARMED:
 			new_anim = 'jump_armed'
+		ATTACK_JAVELIN:
+			new_anim = 'attack_javelin'
 
 # Non-newtonian gravity function based on a gravity vector
 func gravity_loop(delta):
 	linear_vel += delta * GRAVITY_VEC
+	#knock_dir += delta * GRAVITY_VEC
 
 # Player only loop
 func control_loop():
@@ -107,12 +110,16 @@ func control_loop():
 				if !DOWN and attack_timer == 0:
 					linear_vel.x *= WALK_SPEED
 				
-			""" Makes sure the player can only jump while standing on the floor
-				also changes the state to IDLE to make sure the current animation
-				stops playing when "ui_accept" is pressed (but not held) """
-			if Input.is_action_just_pressed("ui_accept") and attack_timer == 0:
-				change_state(JUMP_ARMED)
-				linear_vel.y = -JUMP_SPEED
+				if Input.is_action_just_pressed("attack2") and attack_timer == 0:
+					attack_timer = 20
+					change_state(ATTACK_JAVELIN)
+				
+				""" Makes sure the player can only jump while standing on the floor
+					also changes the state to IDLE to make sure the current animation
+					stops playing when "ui_accept" is pressed (but not held) """
+				if Input.is_action_just_pressed("ui_accept") and attack_timer == 0:
+					change_state(JUMP_ARMED)
+					linear_vel.y = -JUMP_SPEED
 				
 			""" in-air attacks """
 			if Input.is_action_just_pressed("attack") and attack_timer == 0 and !UP and !DOWN:
@@ -162,7 +169,13 @@ func control_loop():
 		if is_on_wall() and state != JUMP_NAKED and state != JUMP_ARMED and is_on_floor() and not $Sprite/RayCast2D.is_colliding():
 			change_state(PUSH)
 		
-	else:
+	elif hitstun > 0:
 		""" Player is knocked away from target of damage and state is changed to show that """
 		change_state('damaged')
+		print(knock_dir)
+		if knock_dir.y < 10:
+			knock_dir.y += 0.1
 		move_and_slide(knock_dir*WALK_SPEED)
+		if knock_dir.y > 3:
+			knock_dir.x = 0
+			change_state(DAMAGED)
