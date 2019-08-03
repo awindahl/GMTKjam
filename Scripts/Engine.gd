@@ -159,7 +159,7 @@ func control_loop():
 		""" Linear velocity is updated to the movement function. """
 		linear_vel = move_and_slide(linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
 		
-		if is_on_wall() and state != JUMP_NAKED and state != JUMP_ARMED and is_on_floor():
+		if is_on_wall() and state != JUMP_NAKED and state != JUMP_ARMED and is_on_floor() and not $Sprite/RayCast2D.is_colliding():
 			change_state(PUSH)
 		
 	else:

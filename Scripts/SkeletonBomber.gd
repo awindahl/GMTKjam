@@ -46,6 +46,7 @@ func _process(delta):
 			$Sprite.flip_h = false
 		
 		move_and_slide(linearVel * SPEED)
+	
 
 func _on_HitBox_body_entered(body):
 	if body is Player:
@@ -66,5 +67,7 @@ func _vision():
 		if body is Player:
 			linearVel = (position - body.position).normalized() * -1
 			isSeeingPlayer = true
+			$Point.visible = true
 		else:
 			isSeeingPlayer = false
+			$Point.visible = true

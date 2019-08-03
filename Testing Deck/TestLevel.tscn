@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/SkeletonBomber.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -34,3 +35,7 @@ shape = SubResource( 1 )
 position = Vector2( -240, -50 )
 scale = Vector2( 4, 4 )
 armed = true
+
+[node name="SkeletonBomber" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, -90 )
+scale = Vector2( 2.5, 2.5 )

@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/PlayerSprites.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 4, 8 )
+extents = Vector2( 3.953, 7.888 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "attack_down"
@@ -176,10 +176,10 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 5.05293, 7.88812 ) ]
+"values": [ Vector2( 5.05293, 7.88812 ), Vector2( 3.953, 7.888 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -1086,7 +1086,7 @@ extents = Vector2( 2.47933, 1.24685 )
 extents = Vector2( 7.18572, 1.24626 )
 
 [sub_resource type="RectangleShape2D" id=20]
-extents = Vector2( 4, 9 )
+extents = Vector2( 5, 9 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 9
@@ -1098,7 +1098,13 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 12
-frame = 7
+frame = 5
+
+[node name="RayCast2D" type="RayCast2D" parent="Sprite"]
+position = Vector2( -8, 0 )
+enabled = true
+cast_to = Vector2( 16.44, 0 )
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.633293, 0 )
@@ -1145,7 +1151,6 @@ shape = SubResource( 17 )
 [node name="attack_forward_hitbox" type="Area2D" parent="."]
 visible = false
 position = Vector2( 6, -2 )
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_forward_hitbox"]
 visible = false
@@ -1155,12 +1160,14 @@ shape = SubResource( 18 )
 editor/display_folded = true
 visible = false
 position = Vector2( 6, 3 )
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack_crouch_hitbox"]
 shape = SubResource( 19 )
 
 [node name="hitbox" type="Area2D" parent="."]
 visible = false
+position = Vector2( -3, 0 )
 collision_layer = 9
 collision_mask = 9
 
