@@ -1,7 +1,10 @@
 extends "res://Scripts/Engine.gd"
+class_name Player
 
 # cache the anims
 onready var AnimationPlayer = get_node("AnimationPlayer")
+
+const TYPE = "PLAYER"
 
 func _ready():
 	change_state(IDLE_NAKED)

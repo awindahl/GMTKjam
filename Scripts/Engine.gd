@@ -17,6 +17,7 @@ var anim
 var new_anim
 var attacking
 var attack_timer = 0
+var isSeeingPlayer = false
 
 # player variables
 export var WALK_SPEED = 45
@@ -106,12 +107,12 @@ func control_loop():
 				if !DOWN and attack_timer == 0:
 					linear_vel.x *= WALK_SPEED
 				
-				""" Makes sure the player can only jump while standing on the floor
-					also changes the state to IDLE to make sure the current animation
-					stops playing when "ui_accept" is pressed (but not held) """
-				if Input.is_action_just_pressed("ui_accept") and attack_timer == 0:
-					change_state(JUMP_ARMED)
-					linear_vel.y = -JUMP_SPEED
+			""" Makes sure the player can only jump while standing on the floor
+				also changes the state to IDLE to make sure the current animation
+				stops playing when "ui_accept" is pressed (but not held) """
+			if Input.is_action_just_pressed("ui_accept") and attack_timer == 0:
+				change_state(JUMP_ARMED)
+				linear_vel.y = -JUMP_SPEED
 				
 			""" in-air attacks """
 			if Input.is_action_just_pressed("attack") and attack_timer == 0 and !UP and !DOWN:
@@ -125,7 +126,7 @@ func control_loop():
 					change_state(ATTACK_DOWN)
 					
 			""" Changes the default state to IDLE """
-			if !RIGHT and !LEFT and !DOWN and state == RUN_ARMED and attack_timer == 0:
+			if !RIGHT and !LEFT and !DOWN and !UP and state == RUN_ARMED and attack_timer == 0:
 				change_state(IDLE_ARMED)
 				
 		elif !armed:

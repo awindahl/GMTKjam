@@ -1089,6 +1089,8 @@ extents = Vector2( 7.18572, 1.24626 )
 extents = Vector2( 4, 9 )
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 9
+collision_mask = 9
 collision/safe_margin = 0.005
 script = ExtResource( 1 )
 
@@ -1159,7 +1161,8 @@ shape = SubResource( 19 )
 
 [node name="hitbox" type="Area2D" parent="."]
 visible = false
-monitoring = false
+collision_layer = 9
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource( 20 )
