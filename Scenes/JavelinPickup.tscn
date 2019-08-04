@@ -7,7 +7,7 @@
 extents = Vector2( 8.16, 4.05 )
 
 [node name="JavelinPickup" type="Node2D"]
-scale = Vector2( 3, 2 )
+scale = Vector2( 1.5, 1 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]

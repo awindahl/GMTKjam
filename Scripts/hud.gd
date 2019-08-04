@@ -13,7 +13,7 @@ onready var bomb = $equipBomb
 onready var gameOver = $gameOver
 
 func _ready():
-	equip("unarmed")
+	equip("UNARMED")
 
 func _unhandled_input(event):
 	if event is InputEventKey:

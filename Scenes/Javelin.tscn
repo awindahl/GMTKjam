@@ -25,7 +25,7 @@ position = Vector2( -0.67, 0.59 )
 shape = SubResource( 1 )
 
 [node name="TimeToLive" type="Timer" parent="."]
-wait_time = 1.2
+wait_time = 3.0
 one_shot = true
 autostart = true
 

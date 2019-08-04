@@ -41,9 +41,6 @@ __meta__ = {
 
 [node name="hud" type="Sprite" parent="."]
 texture = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="floor" type="Sprite" parent="."]
 position = Vector2( 442.502, -263.858 )
@@ -90,7 +87,7 @@ texture = ExtResource( 7 )
 
 [node name="equipFist" type="Sprite" parent="."]
 visible = false
-position = Vector2( -471.868, 255.496 )
+position = Vector2( -471.868, -188.504 )
 scale = Vector2( 4.29777, 4.29777 )
 texture = ExtResource( 8 )
 __meta__ = {
@@ -99,7 +96,7 @@ __meta__ = {
 
 [node name="equipSword" type="Sprite" parent="."]
 visible = false
-position = Vector2( -471.868, 255.496 )
+position = Vector2( -471.868, -188.504 )
 scale = Vector2( 4.29777, 4.29777 )
 texture = ExtResource( 9 )
 __meta__ = {
@@ -108,7 +105,7 @@ __meta__ = {
 
 [node name="equipJavelin" type="Sprite" parent="."]
 visible = false
-position = Vector2( -471.868, 255.496 )
+position = Vector2( -471.868, -188.504 )
 scale = Vector2( 4.29777, 4.29777 )
 texture = ExtResource( 10 )
 __meta__ = {
@@ -117,7 +114,7 @@ __meta__ = {
 
 [node name="equipBomb" type="Sprite" parent="."]
 visible = false
-position = Vector2( -471.868, 255.496 )
+position = Vector2( -471.868, -188.504 )
 scale = Vector2( 4.29777, 4.29777 )
 texture = ExtResource( 11 )
 __meta__ = {

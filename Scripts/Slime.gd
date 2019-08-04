@@ -27,7 +27,11 @@ func _process(delta):
 	if moveTimer > 0 and $RayCast2D.is_colliding():
 		moveTimer -= 1
 	
+	if linearVel.y > 3:
+		$RayCast2D.enabled = true
+	
 	if moveTimer == 0 and $RayCast2D.is_colliding() and not isJumping:
+		$RayCast2D.enabled = false
 		isJumping = true
 		moveDir = rand()
 		linearVel = moveDir.normalized()
@@ -63,8 +67,8 @@ func rand():
 			return RIGHT
 
 func hit(hit_pos):
-	knockDir = (hit_pos - position).normalized() * -1
-	knockDir.y -= 1
+	knockDir = (hit_pos - position).normalized() 
+	knockDir.y -= 0.1
 	alive = false
 
 func die():
