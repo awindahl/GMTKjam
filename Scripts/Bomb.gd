@@ -7,7 +7,6 @@ func _process(delta):
 
 func _on_Timer_timeout():
 	$AnimationPlayer.play("explode")
-	
 
 func die():
 	queue_free()

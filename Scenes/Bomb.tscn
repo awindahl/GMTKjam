@@ -49,7 +49,7 @@ tracks/2/keys = {
 }
 
 [node name="Bomb" type="Node2D"]
-position = Vector2( -26.41, -30 )
+position = Vector2( 0, -30 )
 scale = Vector2( 3, 3 )
 script = ExtResource( 1 )
 
