@@ -1,15 +1,15 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://Testing Deck/TestLevel.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/game.gd" type="Script" id=3]
-[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.1769, 62.5494 )
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource( 3 )
+script = ExtResource( 1 )
 
 [node name="1" parent="." instance=ExtResource( 2 )]
 position = Vector2( 512.883, 300.282 )
@@ -33,13 +33,14 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="door1" type="Area2D" parent="."]
+editor/display_folded = true
 modulate = Color( 0.909804, 0.160784, 0.160784, 1 )
 position = Vector2( -4.55042, 511.921 )
 
 [node name="Sprite" type="Sprite" parent="door1"]
 position = Vector2( 0, 0.629045 )
 scale = Vector2( 1, 1.9489 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -59,13 +60,14 @@ __meta__ = {
 }
 
 [node name="door2" type="Area2D" parent="."]
+editor/display_folded = true
 modulate = Color( 0.909804, 0.160784, 0.160784, 1 )
 position = Vector2( 1026.13, 515.016 )
 
 [node name="Sprite" type="Sprite" parent="door2"]
 position = Vector2( 0, 0.629045 )
 scale = Vector2( 1, 1.9489 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -85,13 +87,14 @@ __meta__ = {
 }
 
 [node name="door3" type="Area2D" parent="."]
+editor/display_folded = true
 modulate = Color( 0.909804, 0.160784, 0.160784, 1 )
 position = Vector2( 2049.07, 527.397 )
 
 [node name="Sprite" type="Sprite" parent="door3"]
 position = Vector2( 0, 0.629045 )
 scale = Vector2( 1, 1.9489 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -111,13 +114,14 @@ __meta__ = {
 }
 
 [node name="door4" type="Area2D" parent="."]
+editor/display_folded = true
 modulate = Color( 0.909804, 0.160784, 0.160784, 1 )
 position = Vector2( 3075.99, 520.781 )
 
 [node name="Sprite" type="Sprite" parent="door4"]
 position = Vector2( 0, 0.629045 )
 scale = Vector2( 1, 1.9489 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -136,9 +140,12 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
+[node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 507.32, 514.178 )
 scale = Vector2( 5.02992, 5.31652 )
+WALK_SPEED = 150
+JUMP_SPEED = 300
+armed = true
 
 [node name="Label" type="Label" parent="."]
 margin_left = 455.368
