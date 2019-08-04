@@ -183,7 +183,6 @@ func control_loop():
 	elif hitstun > 0:
 		""" Player is knocked away from target of damage and state is changed to show that """
 		change_state('damaged')
-		print(knock_dir)
 		if knock_dir.y < 10:
 			knock_dir.y += 0.1
 		move_and_slide(knock_dir*WALK_SPEED)
