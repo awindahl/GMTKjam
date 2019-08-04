@@ -20,7 +20,7 @@ func die():
 	
 func explode():
 	for body in $Area2D.get_overlapping_bodies():
-		if body is Wall:
+		if body.get("TYPE") == "WALL":
 			body.blow_up()
 		if body.get("TYPE") == "PLAYER":
 			body._hit(position)
