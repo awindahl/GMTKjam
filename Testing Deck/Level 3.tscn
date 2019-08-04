@@ -22,13 +22,14 @@ tile_data = PoolIntArray( 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 6
 position = Vector2( 168, 272 )
 
 [node name="Tileset3" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( 131093, 0, 0, 131094, 0, 0, 196629, 0, 0, 196630, 0, 0, 262165, 0, 0, 262166, 0, 0, 327697, 0, 0, 327698, 0, 0, 327701, 0, 0, 327702, 0, 0 )
 
 [node name="slimeSpawner" parent="." instance=ExtResource( 3 )]
 position = Vector2( 550, 500 )
 level = 3
 
 [node name="skeletonSpawner" parent="." instance=ExtResource( 4 )]
-position = Vector2( 860, 260 )
+position = Vector2( 940, 260 )
 level = 3
 
 [node name="DestructibleWall" parent="." instance=ExtResource( 5 )]
