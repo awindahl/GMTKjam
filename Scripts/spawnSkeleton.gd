@@ -1,17 +1,17 @@
 extends Node
 
-var coin
+var enemy
 var scene
 export(int) var level = 1
 
 func _ready():
-	GameController.coinSpawner.append(self)
-	scene = load("res://Scenes/coin.tscn")
+	GameController.enemy.append(self)
+	scene = load("res://Scenes/SkeletonBomber.tscn")
 
 func _spawn():
 	if GameController.level == level:
-		coin = scene.instance()
+		enemy = scene.instance()
 		_add()
 
 func _add():
-	add_child(coin)
+	add_child(enemy)

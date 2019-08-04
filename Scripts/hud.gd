@@ -25,6 +25,8 @@ func _unhandled_input(event):
 			_on_restartBtn_pressed()
 
 func _on_quitBtn_pressed():
+	GameController.coinSpawner = []
+	GameController.enemy = []
 	transition.fade_to("res://Scenes/Menu/MainMenu.tscn", 0.9)
 
 func _on_pauseBtn_pressed():
@@ -74,6 +76,9 @@ func equip(var type):
 
 func addScore(var num):
 	scoreNr.text = str(int(scoreNr.text) + num)
+
+func updateScore(var num):
+	scoreNr.text = str(num)
 	
 func addLevel(var num):
 	floorNr.text = str(int(floorNr.text) + num)

@@ -31,25 +31,26 @@ func reset_door(var door):
 	door.get_node("StaticBody2D").set_collision_layer(1)
 	door.get_node("StaticBody2D").set_collision_mask(1)
 	
-func _on_door1_area_entered(area):
-	if area.get_name() == "hitbox" and exit == $door1:
+func _on_door1_body_entered(body):
+	if body.get("TYPE") == "PLAYER" and exit == $door1:
 		print("you can not escape")
 
-func _on_door2_area_entered(area):
-	if area.get_name() == "hitbox" and exit == $door2:
+func _on_door2_body_entered(body):
+	if body.get("TYPE") == "PLAYER" and exit == $door2:
 		updateLevel()
 
-func _on_door3_area_entered(area):
-	if area.get_name() == "hitbox" and exit == $door3:
+func _on_door3_body_entered(body):
+	if body.get("TYPE") == "PLAYER" and exit == $door3:
 		updateLevel()
 
-func _on_door4_area_entered(area):
-	if area.get_name() == "hitbox" and exit == $door4:
+func _on_door4_body_entered(body):
+	if body.get("TYPE") == "PLAYER" and exit == $door4:
 		print("you win!")
 
 func updateLevel():
 	removeEntities()
-	GameController.score = GameController.score+localScore
+	GameController.score += localScore
+	hud.updateScore(GameController.score)
 	localScore = 0
 	level = level+1
 	updateHudLevel()
@@ -62,7 +63,6 @@ func updateLevel():
 	panCam()
 	movePlayer()
 	
-
 func restartLevel():
 	removeEntities()
 	$Player.global_position = get_node(str(level)).get_node("playerStart").global_position
@@ -70,6 +70,7 @@ func restartLevel():
 	if gameOver:
 		gameOver = false
 	localScore = 0
+	hud.updateScore(GameController.score + localScore)
 	spawnEntities()
 
 func gameOver():
@@ -80,6 +81,7 @@ func equip(var item):
 	hud.equip(item)
 
 func updateHudScore(var num = 1):
+	localScore += num;
 	hud.addScore(num)
 	
 func updateHudLevel(var num = 1):
@@ -87,11 +89,13 @@ func updateHudLevel(var num = 1):
 
 func removeEntities():
 	for entity in GameController.coinSpawner:
-		for coin in entity:
-			coin.queue_free()
+		for coin in entity.get_children():
+			if not str(coin.get_name()).match("Position2D"):
+				coin.queue_free()
 	for entity in GameController.enemy:
-		for enemy in entity:
-			enemy.queue_free()
+		for enemy in entity.get_children():
+			if not str(enemy.get_name()).match("Position2D") and not str(enemy.get_name()).match("Sprite"):
+				enemy.queue_free()
 
 func spawnEntities():
 	for entity in GameController.coinSpawner:
