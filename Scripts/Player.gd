@@ -23,8 +23,6 @@ func _physics_process(delta):
 	gravity_loop(delta)
 	control_loop()
 	
-<<<<<<< HEAD
-=======
 func _hit(dir):
 	print("hit")
 	hitstun = 1
@@ -39,4 +37,3 @@ func _shoot():
 func _bomb():
 	new_bomb = bomb.instance()
 	get_parent().add_child(new_bomb)
->>>>>>> 7ebc2104431bff5e4501fd424104e5188e43c256

@@ -6,7 +6,9 @@ const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_SLIDE_STOP = 25.0
 
 # animation states
-enum {IDLE_NAKED, IDLE_ARMED, RUN_NAKED, RUN_ARMED, ATTACK_DOWN, ATTACK_UP, ATTACK_FORWARD, PUSH, DAMAGED, CROUCH, CROUCH_ATTACK, PICKUP, JUMP_NAKED, JUMP_ARMED}
+enum {IDLE_NAKED, IDLE_ARMED, RUN_NAKED, RUN_ARMED, ATTACK_DOWN, ATTACK_UP, ATTACK_FORWARD, 
+		PUSH, DAMAGED, CROUCH, CROUCH_ATTACK, PICKUP, JUMP_NAKED, JUMP_ARMED, ATTACK_JAVELIN, 
+		ATTACK_BOMB}
 
 # shared variables
 var linear_vel = Vector2()
@@ -17,9 +19,11 @@ var anim
 var new_anim
 var attacking
 var attack_timer = 0
+var ammo = 1
+var bombs = 0
 
 # player variables
-export var WALK_SPEED = 200
+export var WALK_SPEED = 45
 export var JUMP_SPEED = 150
 export var armed = false
 
@@ -55,10 +59,15 @@ func change_state(new_state):
 			new_anim = 'jump_naked'
 		JUMP_ARMED:
 			new_anim = 'jump_armed'
+		ATTACK_JAVELIN:
+			new_anim = 'attack_javelin'
+		ATTACK_BOMB:
+			new_anim = 'attack_bomb'
 
 # Non-newtonian gravity function based on a gravity vector
 func gravity_loop(delta):
 	linear_vel += delta * GRAVITY_VEC
+	#knock_dir += delta * GRAVITY_VEC
 
 # Player only loop
 func control_loop():
@@ -106,6 +115,16 @@ func control_loop():
 				if !DOWN and attack_timer == 0:
 					linear_vel.x *= WALK_SPEED
 				
+				if Input.is_action_just_pressed("attack2") and attack_timer == 0 and ammo > 0:
+					ammo -= 1
+					attack_timer = 20
+					change_state(ATTACK_JAVELIN)
+				
+				if Input.is_action_just_pressed("bomb") and attack_timer == 0 and bombs > 0:
+					bombs -= 1
+					attack_timer = 20
+					change_state(ATTACK_BOMB)
+				
 				""" Makes sure the player can only jump while standing on the floor
 					also changes the state to IDLE to make sure the current animation
 					stops playing when "ui_accept" is pressed (but not held) """
@@ -125,7 +144,7 @@ func control_loop():
 					change_state(ATTACK_DOWN)
 					
 			""" Changes the default state to IDLE """
-			if !RIGHT and !LEFT and !DOWN and state == RUN_ARMED and attack_timer == 0:
+			if !RIGHT and !LEFT and !DOWN and !UP and state == RUN_ARMED and attack_timer == 0:
 				change_state(IDLE_ARMED)
 				
 		elif !armed:
@@ -158,10 +177,16 @@ func control_loop():
 		""" Linear velocity is updated to the movement function. """
 		linear_vel = move_and_slide(linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
 		
-		if is_on_wall() and state != JUMP_NAKED and state != JUMP_ARMED and is_on_floor():
+		if is_on_wall() and state != JUMP_NAKED and state != JUMP_ARMED and is_on_floor() and not $Sprite/RayCast2D.is_colliding():
 			change_state(PUSH)
 		
-	else:
+	elif hitstun > 0:
 		""" Player is knocked away from target of damage and state is changed to show that """
 		change_state('damaged')
+		print(knock_dir)
+		if knock_dir.y < 10:
+			knock_dir.y += 0.1
 		move_and_slide(knock_dir*WALK_SPEED)
+		if knock_dir.y > 3:
+			knock_dir.x = 0
+		
