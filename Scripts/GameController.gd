@@ -7,9 +7,10 @@ var player
 
 var enemy = []
 var coinSpawner = []
-
 const filepath = "res://save/game_data.sve"
+
 func _ready():
+	OS.set_window_title("Decrepit Dungeon")
 	_load()
 
 func _save():
