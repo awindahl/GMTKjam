@@ -3,7 +3,7 @@ extends KinematicBody2D
 # shared constants
 const GRAVITY_VEC = Vector2(0, 500)
 const FLOOR_NORMAL = Vector2(0, -1)
-const SLOPE_SLIDE_STOP = 25.0
+const SLOPE_SLIDE_STOP = 1.0
 
 # animation states
 enum {IDLE_NAKED, IDLE_ARMED, RUN_NAKED, RUN_ARMED, ATTACK_DOWN, ATTACK_UP, ATTACK_FORWARD, 
