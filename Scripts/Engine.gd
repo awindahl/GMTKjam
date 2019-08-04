@@ -183,7 +183,6 @@ func control_loop():
 				and (RIGHT or LEFT):
 			change_state(PUSH)
 		
-		
 	elif hitstun > 0:
 		""" Player is knocked away from target of damage and state is changed to show that """
 		change_state('damaged')
