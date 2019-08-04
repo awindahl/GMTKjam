@@ -36,26 +36,22 @@ func _on_door1_area_entered(area):
 
 func _on_door2_area_entered(area):
 	if area.get_name() == "hitbox" and exit == $door2:
-		print("changing level")
-		level = level+1
-		GameController.level = level
-		reset_door(exit)
-		exit = get_node("door"+ str(level+1))
-		set_exit(exit)
-		panCam()
-		movePlayer()
+		updateLevel()
 
 func _on_door3_area_entered(area):
 	if area.get_name() == "hitbox" and exit == $door3:
-		print("changing level")
-		level = level+1
-		GameController.level = level
-		reset_door(exit)
-		exit = get_node("door"+ str(level+1))
-		set_exit(exit)
-		panCam()
-		movePlayer()
+		updateLevel()
 
 func _on_door4_area_entered(area):
 	if area.get_name() == "hitbox" and exit == $door4:
 		print("you win!")
+
+func updateLevel():
+	level = level+1
+	GameController.level = level
+	GameController._save()
+	reset_door(exit)
+	exit = get_node("door"+ str(level+1))
+	set_exit(exit)
+	panCam()
+	movePlayer()
