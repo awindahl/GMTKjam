@@ -3,7 +3,7 @@ extends KinematicBody2D
 # shared constants
 const GRAVITY_VEC = Vector2(0, 500)
 const FLOOR_NORMAL = Vector2(0, -1)
-const SLOPE_SLIDE_STOP = 25.0
+const SLOPE_SLIDE_STOP = 1.0
 
 # animation states
 enum {IDLE_NAKED, IDLE_ARMED, RUN_NAKED, RUN_ARMED, ATTACK_DOWN, ATTACK_UP, ATTACK_FORWARD, 
@@ -19,8 +19,8 @@ var anim
 var new_anim
 var attacking
 var attack_timer = 0
-var ammo = 10
-var bombs = 0
+var ammo = false
+var bombs = false
 
 # player variables
 export var WALK_SPEED = 45
@@ -115,16 +115,6 @@ func control_loop():
 				if !DOWN and attack_timer == 0:
 					linear_vel.x *= WALK_SPEED
 				
-				if Input.is_action_just_pressed("attack2") and attack_timer == 0 and ammo > 0:
-					ammo -= 1
-					attack_timer = 20
-					change_state(ATTACK_JAVELIN)
-				
-				if Input.is_action_just_pressed("bomb") and attack_timer == 0 and bombs > 0:
-					bombs -= 1
-					attack_timer = 20
-					change_state(ATTACK_BOMB)
-				
 				""" Makes sure the player can only jump while standing on the floor
 					also changes the state to IDLE to make sure the current animation
 					stops playing when "ui_accept" is pressed (but not held) """
@@ -153,7 +143,7 @@ func control_loop():
 					direction is pressed if the player does not have any 
 					velocity in the x-axis, the state changes to IDLE """
 				linear_vel.x = -int(LEFT) + int(RIGHT)
-				if linear_vel.x == 0:
+				if linear_vel.x == 0 and attack_timer == 0:
 					change_state(IDLE_NAKED)
 				if LEFT and !RIGHT:
 					change_state(RUN_NAKED)
@@ -163,27 +153,39 @@ func control_loop():
 					$Sprite.flip_h = false
 				linear_vel.x *= WALK_SPEED
 				
+				if Input.is_action_just_pressed("attack2") and attack_timer == 0 and ammo:
+					ammo -= 1
+					attack_timer = 20
+					change_state(ATTACK_JAVELIN)
+				
+				if Input.is_action_just_pressed("bomb") and attack_timer == 0 and bombs:
+					bombs -= 1
+					attack_timer = 20
+					change_state(ATTACK_BOMB)
+				
 				""" Makes sure the player can only jump while standing on the floor
 					also changes the state to IDLE to make sure the current animation
 					stops playing when "ui_accept" is pressed (but not held) """
 				if Input.is_action_just_pressed("ui_accept"):
 					change_state(JUMP_NAKED)
 					linear_vel.y = -JUMP_SPEED
-			
+				
 			""" Changes the default state to IDLE """
 			if !RIGHT and !LEFT and !DOWN and state == RUN_NAKED:
 				change_state(IDLE_NAKED)
+				linear_vel.x = WALK_SPEED
 		
 		""" Linear velocity is updated to the movement function. """
 		linear_vel = move_and_slide(linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
 		
-		if is_on_wall() and state != JUMP_NAKED and state != JUMP_ARMED and is_on_floor() and not $Sprite/RayCast2D.is_colliding():
+		if state != JUMP_NAKED and state != JUMP_ARMED and is_on_floor() \
+				and not $Sprite/RayCast2D.is_colliding() and $Sprite/BlockCheck.is_colliding() \
+				and (RIGHT or LEFT):
 			change_state(PUSH)
 		
 	elif hitstun > 0:
 		""" Player is knocked away from target of damage and state is changed to show that """
 		change_state('damaged')
-		print(knock_dir)
 		if knock_dir.y < 10:
 			knock_dir.y += 0.1
 		move_and_slide(knock_dir*WALK_SPEED)

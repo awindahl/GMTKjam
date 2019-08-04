@@ -25,7 +25,7 @@ func _physics_process(delta):
 	
 func _hit(dir):
 	hitstun = 1
-	knock_dir = (position - dir).normalized()
+	knock_dir = (position - dir).normalized() * -1
 	knock_dir.y = -4
 	change_state(DAMAGED)
 	get_parent().gameOver()
@@ -41,3 +41,23 @@ func _bomb():
 func _reset():
 	change_state(IDLE_NAKED)
 	hitstun = 0
+
+func _on_attack_down_hitbox_body_entered(body):
+	if body.get("TYPE") == "ENEMY":
+		body.hit(position)
+		armed = false
+
+func _on_attack_up_hitbox_body_entered(body):
+	if body.get("TYPE") == "ENEMY":
+		body.hit(position)
+		armed = false
+
+func _on_attack_forward_hitbox_body_entered(body):
+	if body.get("TYPE") == "ENEMY":
+		body.hit(position)
+		armed = false
+
+func _on_attack_crouch_hitbox_body_entered(body):
+	if body.get("TYPE") == "ENEMY":
+		body.hit(position)
+		armed = false

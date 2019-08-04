@@ -1289,6 +1289,12 @@ enabled = true
 cast_to = Vector2( 16.44, 0 )
 collision_mask = 16
 
+[node name="BlockCheck" type="RayCast2D" parent="Sprite"]
+position = Vector2( -7, 0 )
+enabled = true
+cast_to = Vector2( 12.75, 0 )
+collision_mask = 262144
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.633293, 0 )
 scale = Vector2( 0.90953, 1 )
@@ -1313,6 +1319,7 @@ anims/run_armed = SubResource( 16 )
 anims/run_naked = SubResource( 17 )
 
 [node name="attack_down_hitbox" type="Area2D" parent="."]
+visible = false
 position = Vector2( 0, 6 )
 monitoring = false
 
@@ -1359,3 +1366,7 @@ shape = SubResource( 22 )
 position = Vector2( -1, 0 )
 cast_to = Vector2( 0, 10.24 )
 collision_mask = 524289
+[connection signal="body_entered" from="attack_down_hitbox" to="." method="_on_attack_down_hitbox_body_entered"]
+[connection signal="body_entered" from="attack_up_hitbox" to="." method="_on_attack_up_hitbox_body_entered"]
+[connection signal="body_entered" from="attack_forward_hitbox" to="." method="_on_attack_forward_hitbox_body_entered"]
+[connection signal="body_entered" from="attack_crouch_hitbox" to="." method="_on_attack_crouch_hitbox_body_entered"]

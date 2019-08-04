@@ -24,3 +24,5 @@ func explode():
 			body.blow_up()
 		if body.get("TYPE") == "PLAYER":
 			body._hit(position)
+		if body.get("TYPE") == "ENEMY":
+			body.hit(position)
