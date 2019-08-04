@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scripts/hud.gd" type="Script" id=1]
 [ext_resource path="res://Assets/pause.png" type="Texture" id=2]
@@ -11,6 +11,33 @@
 [ext_resource path="res://Assets/swordIcon.png" type="Texture" id=9]
 [ext_resource path="res://Assets/javelinIcon.png" type="Texture" id=10]
 [ext_resource path="res://Assets/bombIcon.png" type="Texture" id=11]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+
+[sub_resource type="StyleBoxFlat" id=6]
+
+[sub_resource type="StyleBoxFlat" id=7]
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+
+[sub_resource type="StyleBoxFlat" id=10]
+
+[sub_resource type="StyleBoxFlat" id=11]
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0, 0, 0, 1 )
 
 [node name="hud" type="Node2D"]
 pause_mode = 2
@@ -129,6 +156,10 @@ margin_left = -496.46
 margin_top = -282.487
 margin_right = -455.46
 margin_bottom = -244.487
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
 text = "quit"
 __meta__ = {
 "_edit_lock_": true,
@@ -141,6 +172,10 @@ margin_top = -282.487
 margin_right = -395.46
 margin_bottom = -244.487
 focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
 enabled_focus_mode = 0
 text = "pause"
 __meta__ = {
@@ -153,6 +188,10 @@ margin_left = -366.46
 margin_top = -282.487
 margin_right = -316.46
 margin_bottom = -244.487
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 text = "restart"
 __meta__ = {
 "_edit_lock_": true,

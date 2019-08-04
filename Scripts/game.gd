@@ -6,7 +6,10 @@ onready var hud = $CanvasLayer/hud
 onready var level = GameController.level
 onready var exit = get_node("door"+ str(level+1))
 
-#set exit door to an "opened" sprite
+#	remember to go to Export, 
+#	then the resources tab and set the export mode to 
+#	Export all resources in the project to 
+#	make godot include the JSON file in the build
 
 func _ready():
 	$Camera2D.global_position = get_node(str(level)).get_node("cameraStart").global_position
@@ -62,6 +65,7 @@ func updateLevel():
 	set_exit(exit)
 	panCam()
 	movePlayer()
+	$Player._reset()
 
 func restartLevel():
 	removeEntities()

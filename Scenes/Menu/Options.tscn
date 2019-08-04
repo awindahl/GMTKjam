@@ -1,9 +1,48 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/Credits/sumaris.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Credits/alewin.png" type="Texture" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Assets/StartScreen.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Options.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/CRT Shader.tscn" type="PackedScene" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.290196, 0.290196, 0.290196, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+
+[sub_resource type="StyleBoxFlat" id=6]
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.305882, 0.305882, 0.305882, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+
+[sub_resource type="StyleBoxFlat" id=10]
+
+[sub_resource type="StyleBoxFlat" id=11]
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+
+[sub_resource type="StyleBoxFlat" id=14]
+
+[sub_resource type="StyleBoxFlat" id=15]
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0, 0, 0, 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -14,11 +53,14 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color( 0.721569, 0.0666667, 0.0666667, 1 )
+modulate = Color( 0.345098, 0.258824, 0.258824, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 3 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Mute_Btn" type="Button" parent="."]
 anchor_left = 0.0429688
@@ -26,6 +68,10 @@ anchor_top = 0.0983333
 anchor_right = 0.164063
 anchor_bottom = 0.163333
 margin_bottom = 7.62939e-006
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
 disabled = true
 text = "Toggle Sound"
 __meta__ = {
@@ -39,6 +85,10 @@ anchor_right = 0.163388
 anchor_bottom = 0.264066
 margin_top = 7.62939e-006
 margin_right = -5.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
 disabled = true
 text = "Toggle Fullscreen"
 __meta__ = {
@@ -51,6 +101,10 @@ anchor_top = 0.298333
 anchor_right = 0.164063
 anchor_bottom = 0.363333
 margin_top = -1.52588e-005
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 text = "Clear Data"
 __meta__ = {
 "_edit_use_anchors_": true
@@ -61,6 +115,10 @@ anchor_left = 0.0429688
 anchor_top = 0.815
 anchor_right = 0.161133
 anchor_bottom = 0.88
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/disabled = SubResource( 15 )
+custom_styles/normal = SubResource( 16 )
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": true
@@ -178,6 +236,8 @@ text = "https://sumaris.itch.io/"
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="CRT Shader" parent="." instance=ExtResource( 5 )]
 [connection signal="pressed" from="Clear_Data_Btn" to="." method="_on_Clear_Data_Btn_pressed"]
 [connection signal="pressed" from="Back_Btn" to="." method="_on_Back_Btn_pressed"]
 [connection signal="pressed" from="GoldenGit" to="." method="_on_GoldenGit_pressed"]

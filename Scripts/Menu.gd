@@ -1,6 +1,8 @@
 extends Node
 
 func _ready():
+	if GameController.gameWon:
+		$Bg2.visible = true
 	if GameController.hasSave:
 		$Continue_Btn.visible = true
 	#check if savefile exists

@@ -46,6 +46,7 @@ func _updateHudUnarmed():
 	
 func _reset():
 	change_state(IDLE_NAKED)
+	_updateHudUnarmed()
 	ammo = 0
 	bombs = 0
 	armed = false
