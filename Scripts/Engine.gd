@@ -19,7 +19,7 @@ var attacking
 var attack_timer = 0
 
 # player variables
-export var WALK_SPEED = 45
+export var WALK_SPEED = 200
 export var JUMP_SPEED = 150
 export var armed = false
 

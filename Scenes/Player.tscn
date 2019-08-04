@@ -1103,10 +1103,6 @@ position = Vector2( 0.633293, 0 )
 scale = Vector2( 0.90953, 1 )
 shape = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, -59 )
-current = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack_down = SubResource( 2 )
 anims/attack_forward = SubResource( 3 )
@@ -1150,7 +1146,6 @@ visible = false
 shape = SubResource( 18 )
 
 [node name="attack_crouch_hitbox" type="Area2D" parent="."]
-editor/display_folded = true
 visible = false
 position = Vector2( 6, 3 )
 

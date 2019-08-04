@@ -16,7 +16,18 @@ _global_script_class_icons={
 [application]
 
 config/name="GMTKjam"
+run/main_scene="res://Scenes/Menu/MainMenu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+transition="*res://Transition/transition.tscn"
+GameController="*res://Scripts/GameController.gd"
+
+[display]
+
+window/size/resizable=false
+window/stretch/aspect="keep_width"
 
 [importer_defaults]
 
