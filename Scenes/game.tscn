@@ -1,193 +1,120 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/game.gd" type="Script" id=1]
-[ext_resource path="res://Testing Deck/Level 1.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Testing Deck/Level 2.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Testing Deck/Level 3.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Testing Deck/Level 4.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/DoorClosed.png" type="Texture" id=6]
-[ext_resource path="res://Assets/DoorOpen.png" type="Texture" id=7]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/hud.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/hud.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Testing Deck/TestLevel.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 25.067, 62.549 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 18.157, 62.549 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 26.627, 62.549 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 22.197, 62.549 )
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 29.627, 50.509 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 24.187, 50.049 )
+extents = Vector2( 32.1769, 62.5494 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="1" parent="." instance=ExtResource( 2 )]
+[node name="1" parent="." instance=ExtResource( 5 )]
+position = Vector2( 512.883, 300.282 )
 
-[node name="2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1152, -80 )
+[node name="2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1537.35, 300.98 )
 
-[node name="3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2300, 160 )
+[node name="3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2560.84, 751.509 )
+rotation = 3.13956
+scale = Vector2( -1.00015, 1 )
 
-[node name="4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 3452, 65 )
-
-[node name="blocker2" type="Area2D" parent="."]
-editor/display_folded = true
+[node name="door1" type="Area2D" parent="."]
 modulate = Color( 0.909804, 0.160784, 0.160784, 1 )
-position = Vector2( 24.4496, 400.921 )
+position = Vector2( -4.55042, 511.921 )
 
-[node name="Sprite" type="Sprite" parent="blocker2"]
-position = Vector2( 0, -0.370941 )
-scale = Vector2( 3.43, 3.039 )
-texture = ExtResource( 6 )
+[node name="Sprite" type="Sprite" parent="door1"]
+position = Vector2( 0, 0.629045 )
+scale = Vector2( 1, 1.9489 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blocker2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door1"]
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="StaticBody2D" type="StaticBody2D" parent="blocker2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="door1"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blocker2/StaticBody2D"]
-shape = SubResource( 2 )
-
-[node name="blocker3" type="Area2D" parent="."]
-editor/display_folded = true
-modulate = Color( 0.909804, 0.160784, 0.160784, 1 )
-position = Vector2( 2273.45, 355.921 )
-
-[node name="Sprite" type="Sprite" parent="blocker3"]
-position = Vector2( 0, -0.370941 )
-scale = Vector2( 3.43, 3.039 )
-texture = ExtResource( 6 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blocker3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door1/StaticBody2D"]
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="StaticBody2D" type="StaticBody2D" parent="blocker3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blocker3/StaticBody2D"]
-shape = SubResource( 2 )
-
-[node name="blocker4" type="Area2D" parent="."]
-editor/display_folded = true
-modulate = Color( 0.909804, 0.160784, 0.160784, 1 )
-position = Vector2( 3474.45, 639.921 )
-
-[node name="Sprite" type="Sprite" parent="blocker4"]
-position = Vector2( 0, -0.370941 )
-scale = Vector2( 3.43, 3.039 )
-texture = ExtResource( 6 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blocker4"]
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="blocker4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blocker4/StaticBody2D"]
-shape = SubResource( 2 )
-
-[node name="blocker" type="Area2D" parent="."]
-editor/display_folded = true
-modulate = Color( 0.909804, 0.160784, 0.160784, 1 )
-position = Vector2( 1174.45, 400.921 )
-
-[node name="Sprite" type="Sprite" parent="blocker"]
-position = Vector2( 0, -0.370941 )
-scale = Vector2( 3.43, 3.039 )
-texture = ExtResource( 6 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blocker"]
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="blocker"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="blocker/StaticBody2D"]
-shape = SubResource( 2 )
 
 [node name="door2" type="Area2D" parent="."]
-editor/display_folded = true
-position = Vector2( 983.13, 399.016 )
+modulate = Color( 0.909804, 0.160784, 0.160784, 1 )
+position = Vector2( 1026.13, 515.016 )
 
 [node name="Sprite" type="Sprite" parent="door2"]
 position = Vector2( 0, 0.629045 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 7 )
+scale = Vector2( 1, 1.9489 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door2"]
-visible = false
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="door2"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door2/StaticBody2D"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="door3" type="Area2D" parent="."]
-editor/display_folded = true
-position = Vector2( 2137.07, 354.397 )
+modulate = Color( 0.909804, 0.160784, 0.160784, 1 )
+position = Vector2( 2049.07, 527.397 )
 
 [node name="Sprite" type="Sprite" parent="door3"]
 position = Vector2( 0, 0.629045 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 7 )
+scale = Vector2( 1, 1.9489 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door3"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="StaticBody2D" type="StaticBody2D" parent="door3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door3/StaticBody2D"]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="door4" type="Area2D" parent="."]
-editor/display_folded = true
-position = Vector2( 3329.99, 639.781 )
+modulate = Color( 0.909804, 0.160784, 0.160784, 1 )
+position = Vector2( 3075.99, 520.781 )
 
 [node name="Sprite" type="Sprite" parent="door4"]
 position = Vector2( 0, 0.629045 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 7 )
+scale = Vector2( 1, 1.9489 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door4"]
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -195,40 +122,14 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="door4"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door4/StaticBody2D"]
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="door5" type="Area2D" parent="."]
-editor/display_folded = true
-position = Vector2( 4435.99, 399.781 )
-
-[node name="Sprite" type="Sprite" parent="door5"]
-position = Vector2( 0, 0.629045 )
-scale = Vector2( 3, 3 )
-texture = ExtResource( 7 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="door5"]
-shape = SubResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="StaticBody2D" type="StaticBody2D" parent="door5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="door5/StaticBody2D"]
-shape = SubResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Player" parent="." instance=ExtResource( 8 )]
-position = Vector2( 87.32, 414.178 )
-WALK_SPEED = 125
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 87.32, 514.178 )
+WALK_SPEED = 75
 JUMP_SPEED = 250
 
 [node name="Label" type="Label" parent="."]
@@ -275,9 +176,9 @@ drag_margin_bottom = 0.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="hud" parent="CanvasLayer" instance=ExtResource( 9 )]
+[node name="hud" parent="CanvasLayer" instance=ExtResource( 4 )]
 position = Vector2( 512.97, 300.351 )
+[connection signal="body_entered" from="door1" to="." method="_on_door1_body_entered"]
 [connection signal="body_entered" from="door2" to="." method="_on_door2_body_entered"]
 [connection signal="body_entered" from="door3" to="." method="_on_door3_body_entered"]
 [connection signal="body_entered" from="door4" to="." method="_on_door4_body_entered"]
-[connection signal="body_entered" from="door5" to="." method="_on_door4_body_entered"]

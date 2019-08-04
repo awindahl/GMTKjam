@@ -83,6 +83,7 @@ func _vision():
 			$Point.visible = true
 		
 func die():
+	menuMusic.get_node("hit").play(0)
 	var newBomb = bombDrop.instance()
 	newBomb.position = position
 	newBomb.position.y += 20

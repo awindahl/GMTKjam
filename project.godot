@@ -26,9 +26,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Decrepit Dungeon"
+config/name="GMTKjam"
 run/main_scene="res://Scenes/Menu/MainMenu.tscn"
-config/icon="res://icon.png"
+config/icon="res://Assets/swordIcon.png"
 
 [autoload]
 

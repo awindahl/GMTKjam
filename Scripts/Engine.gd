@@ -130,11 +130,13 @@ func control_loop():
 					also changes the state to IDLE to make sure the current animation
 					stops playing when "ui_accept" is pressed (but not held) """
 				if Input.is_action_just_pressed("ui_accept") and attack_timer == 0 and is_on_floor():
+					menuMusic.get_node("jump").play(0)
 					change_state(JUMP_ARMED)
 					linear_vel.y = -JUMP_SPEED
 			
 				if not is_on_floor():
 					""" in-air attacks """
+					menuMusic.get_node("hit").play(0)
 					if Input.is_action_just_pressed("attack") and attack_timer == 0 and !UP and !DOWN:
 							attack_timer = 40
 							change_state(ATTACK_FORWARD)
@@ -177,11 +179,13 @@ func control_loop():
 				linear_vel.x *= WALK_SPEED
 				
 				if Input.is_action_just_pressed("attack2") and attack_timer == 0 and ammo and not RIGHT and not LEFT:
+					menuMusic.get_node("hit").play(0)
 					ammo -= 1
 					attack_timer = 40
 					change_state(ATTACK_JAVELIN)
 				
 				if Input.is_action_just_pressed("bomb") and attack_timer == 0 and bombs and not RIGHT and not LEFT and is_on_floor():
+					menuMusic.get_node("hit").play(0)
 					bombs -= 1
 					attack_timer = 40
 					change_state(ATTACK_BOMB)
@@ -190,6 +194,7 @@ func control_loop():
 					also changes the state to IDLE to make sure the current animation
 					stops playing when "ui_accept" is pressed (but not held) """
 				if Input.is_action_just_pressed("ui_accept") and is_on_floor() and attack_timer == 0:
+					menuMusic.get_node("jump").play(0)
 					change_state(JUMP_NAKED)
 					linear_vel.y = -JUMP_SPEED
 				

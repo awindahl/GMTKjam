@@ -13,6 +13,7 @@ func die():
 	queue_free()
 	
 func explode():
+	menuMusic.get_node("explode").play(0)
 	for body in $Area2D.get_overlapping_bodies():
 		if body.get("TYPE") == "WALL":
 			body.blow_up()

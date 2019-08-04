@@ -50,6 +50,7 @@ func _on_door4_body_entered(body):
 		updateLevel()
 
 func updateLevel():
+	menuMusic.get_node("win").play(0)
 	removeEntities()
 	GameController.score += localScore
 	hud.updateScore(GameController.score)
@@ -82,6 +83,7 @@ func restartLevel():
 	spawnEntities()
 
 func gameOver():
+	menuMusic.get_node("hurt").play(0)
 	gameOver = true
 	hud.gameOver()
 
