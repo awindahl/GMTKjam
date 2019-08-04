@@ -4,13 +4,12 @@ var score = 0
 var level = 1
 var hasSave = false
 
+var enemy = []
+var coinSpawner = []
+
 const filepath = "res://save/game_data.sve"
 func _ready():
 	_load()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func _save():
 	var file = File.new()
