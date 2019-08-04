@@ -14,6 +14,7 @@ var new_javelin
 
 func _ready():
 	change_state(IDLE_NAKED)
+	GameController.player = self
 func _process(delta):
 	if new_anim != anim:
 		anim = new_anim
