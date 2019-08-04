@@ -47,7 +47,7 @@ anchor_left = 0.423828
 anchor_top = 0.78
 anchor_right = 0.551758
 anchor_bottom = 0.833334
-margin_top = 3.05176e-005
+margin_top = 3.05176e-05
 text = "Options"
 __meta__ = {
 "_edit_use_anchors_": true

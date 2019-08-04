@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Tileset.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Sword Pickup.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Slime.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/coinSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/slimeSpawner.tscn" type="PackedScene" id=5]
 
 [node name="Level 1" type="Node2D"]
-position = Vector2( 0, -70 )
+position = Vector2( 0, -80 )
 
 [node name="Tileset2" parent="." instance=ExtResource( 1 )]
 z_index = -2
@@ -22,16 +23,20 @@ position = Vector2( 312, 513 )
 [node name="Slime2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 844, 266.611 )
 
-[node name="Slime4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 840, 506.611 )
-
 [node name="Slime3" parent="." instance=ExtResource( 3 )]
 position = Vector2( 204, 266.611 )
 
 [node name="Tileset3" parent="." instance=ExtResource( 1 )]
 tile_data = PoolIntArray( 458754, 6, 0, 524293, 6, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 100, 490 )
-WALK_SPEED = 100
-JUMP_SPEED = 300
+[node name="coinSpawner" parent="." instance=ExtResource( 4 )]
+position = Vector2( 570, 500 )
+
+[node name="slimeSpawner" parent="." instance=ExtResource( 5 )]
+position = Vector2( 890, 500 )
+
+[node name="cameraStart" type="Position2D" parent="."]
+position = Vector2( 512, 300 )
+
+[node name="playerStart" type="Position2D" parent="."]
+position = Vector2( 20, 490 )
