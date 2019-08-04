@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/map.gd" type="Script" id=1]
-[ext_resource path="res://Assets/map.png" type="Texture" id=2]
-[ext_resource path="res://Assets/node.png" type="Texture" id=3]
-[ext_resource path="res://Assets/PlayerSprites.png" type="Texture" id=4]
+[ext_resource path="res://Assets/DetailedMap.png" type="Texture" id=2]
+[ext_resource path="res://Assets/MapDot.png" type="Texture" id=3]
+[ext_resource path="res://Assets/RoomNode.png" type="Texture" id=4]
+[ext_resource path="res://Assets/PlayerSprites.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/CRT Shader.tscn" type="PackedScene" id=6]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -14,63 +16,84 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Panel" type="ColorRect" parent="."]
+margin_right = 1026.0
+margin_bottom = 601.0
+color = Color( 0, 0, 0, 1 )
+
 [node name="map" type="TextureRect" parent="."]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
+[node name="Line2D" type="Line2D" parent="map"]
+position = Vector2( 35, 12.5 )
+points = PoolVector2Array( 27.4998, 108.25, 47.2498, 97.2498, 23.4998, 67.9998, 49.344, 68.4334, 74.4997, 69.2498, 81.7497, 93.7498, 116.75, 91.2498, 153.5, 90.2498, 165.75, 67.4999, 130.75, 75.7498, 128.25, 60.2499, 136, 21.7499 )
+width = 3.38
+texture = ExtResource( 3 )
+texture_mode = 1
+sharp_limit = 0.0
+round_precision = 3
+
 [node name="0" type="Sprite" parent="."]
-position = Vector2( 35.9252, 340.321 )
+position = Vector2( 243.925, 473.321 )
 scale = Vector2( 0.42038, 0.42038 )
 
 [node name="1" type="Sprite" parent="."]
-position = Vector2( 289.354, 337.078 )
-scale = Vector2( 0.42038, 0.42038 )
-texture = ExtResource( 3 )
+position = Vector2( 329.354, 427.078 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
 
 [node name="2" type="Sprite" parent="."]
-position = Vector2( 236.28, 233.026 )
-scale = Vector2( 0.42038, 0.42038 )
-texture = ExtResource( 3 )
+position = Vector2( 236.28, 323.026 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
 
 [node name="3" type="Sprite" parent="."]
-position = Vector2( 348.014, 163.891 )
-scale = Vector2( 0.42038, 0.42038 )
-texture = ExtResource( 3 )
+position = Vector2( 438.014, 323.891 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
 
 [node name="4" type="Sprite" parent="."]
-position = Vector2( 412.96, 499.093 )
-scale = Vector2( 0.42038, 0.42038 )
-texture = ExtResource( 3 )
+position = Vector2( 462.96, 419.093 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
 
 [node name="5" type="Sprite" parent="."]
-position = Vector2( 811.012, 509.568 )
-scale = Vector2( 0.42038, 0.42038 )
-texture = ExtResource( 3 )
+position = Vector2( 601.012, 409.568 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
 
 [node name="6" type="Sprite" parent="."]
-position = Vector2( 824.979, 367.107 )
-scale = Vector2( 0.42038, 0.42038 )
-texture = ExtResource( 3 )
+position = Vector2( 754.979, 407.107 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
 
 [node name="7" type="Sprite" parent="."]
-position = Vector2( 630.142, 217.663 )
-scale = Vector2( 0.42038, 0.42038 )
-texture = ExtResource( 3 )
+position = Vector2( 800.142, 317.663 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
 
 [node name="8" type="Sprite" parent="."]
-position = Vector2( 813.107, 36.7936 )
-scale = Vector2( 0.42038, 0.42038 )
-texture = ExtResource( 3 )
+position = Vector2( 653.107, 286.794 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="9" type="Sprite" parent="."]
+position = Vector2( 683.107, 136.794 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
 
 [node name="player" type="Sprite" parent="."]
-position = Vector2( 33.5368, 338.063 )
+position = Vector2( 243.537, 458.063 )
 scale = Vector2( 2.52357, 2.52357 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 vframes = 2
 hframes = 12
 
@@ -81,4 +104,6 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CRT Shader" parent="." instance=ExtResource( 6 )]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
