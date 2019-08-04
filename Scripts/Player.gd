@@ -36,3 +36,19 @@ func _shoot():
 func _bomb():
 	new_bomb = bomb.instance()
 	get_parent().add_child(new_bomb)
+
+func _on_attack_down_hitbox_body_entered(body):
+	if body.get("TYPE") == "ENEMY":
+		body.hit(position)
+
+func _on_attack_up_hitbox_body_entered(body):
+	if body.get("TYPE") == "ENEMY":
+		body.hit(position)
+
+func _on_attack_forward_hitbox_body_entered(body):
+	if body.get("TYPE") == "ENEMY":
+		body.hit(position)
+
+func _on_attack_crouch_hitbox_body_entered(body):
+	if body.get("TYPE") == "ENEMY":
+		body.hit(position)

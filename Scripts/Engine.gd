@@ -19,8 +19,8 @@ var anim
 var new_anim
 var attacking
 var attack_timer = 0
-var ammo = 10
-var bombs = 0
+var ammo = false
+var bombs = false
 
 # player variables
 export var WALK_SPEED = 45
@@ -115,12 +115,12 @@ func control_loop():
 				if !DOWN and attack_timer == 0:
 					linear_vel.x *= WALK_SPEED
 				
-				if Input.is_action_just_pressed("attack2") and attack_timer == 0 and ammo > 0:
+				if Input.is_action_just_pressed("attack2") and attack_timer == 0 and ammo:
 					ammo -= 1
 					attack_timer = 20
 					change_state(ATTACK_JAVELIN)
 				
-				if Input.is_action_just_pressed("bomb") and attack_timer == 0 and bombs > 0:
+				if Input.is_action_just_pressed("bomb") and attack_timer == 0 and bombs:
 					bombs -= 1
 					attack_timer = 20
 					change_state(ATTACK_BOMB)

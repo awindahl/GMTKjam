@@ -1,5 +1,4 @@
 extends KinematicBody2D
-class_name Enemy
 
 const CENTER = Vector2(0,0)
 const LEFT = Vector2(-1,0)
