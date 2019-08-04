@@ -38,7 +38,7 @@ func _process(delta):
 	if moveTimer > 0:
 		moveTimer -= 1
 	
-	if moveTimer == 0 and not isSeeingPlayer:
+	if moveTimer == 0 and not isSeeingPlayer and alive:
 		moveDir = rand()
 		linearVel = moveDir.normalized()
 		moveTimer = moveTimerLength

@@ -115,16 +115,6 @@ func control_loop():
 				if !DOWN and attack_timer == 0:
 					linear_vel.x *= WALK_SPEED
 				
-				if Input.is_action_just_pressed("attack2") and attack_timer == 0 and ammo:
-					ammo -= 1
-					attack_timer = 20
-					change_state(ATTACK_JAVELIN)
-				
-				if Input.is_action_just_pressed("bomb") and attack_timer == 0 and bombs:
-					bombs -= 1
-					attack_timer = 20
-					change_state(ATTACK_BOMB)
-				
 				""" Makes sure the player can only jump while standing on the floor
 					also changes the state to IDLE to make sure the current animation
 					stops playing when "ui_accept" is pressed (but not held) """
@@ -153,7 +143,7 @@ func control_loop():
 					direction is pressed if the player does not have any 
 					velocity in the x-axis, the state changes to IDLE """
 				linear_vel.x = -int(LEFT) + int(RIGHT)
-				if linear_vel.x == 0:
+				if linear_vel.x == 0 and attack_timer == 0:
 					change_state(IDLE_NAKED)
 				if LEFT and !RIGHT:
 					change_state(RUN_NAKED)
@@ -163,13 +153,23 @@ func control_loop():
 					$Sprite.flip_h = false
 				linear_vel.x *= WALK_SPEED
 				
+				if Input.is_action_just_pressed("attack2") and attack_timer == 0 and ammo:
+					ammo -= 1
+					attack_timer = 20
+					change_state(ATTACK_JAVELIN)
+				
+				if Input.is_action_just_pressed("bomb") and attack_timer == 0 and bombs:
+					bombs -= 1
+					attack_timer = 20
+					change_state(ATTACK_BOMB)
+				
 				""" Makes sure the player can only jump while standing on the floor
 					also changes the state to IDLE to make sure the current animation
 					stops playing when "ui_accept" is pressed (but not held) """
 				if Input.is_action_just_pressed("ui_accept"):
 					change_state(JUMP_NAKED)
 					linear_vel.y = -JUMP_SPEED
-			
+				
 			""" Changes the default state to IDLE """
 			if !RIGHT and !LEFT and !DOWN and state == RUN_NAKED:
 				change_state(IDLE_NAKED)

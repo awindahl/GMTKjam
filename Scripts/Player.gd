@@ -40,15 +40,19 @@ func _bomb():
 func _on_attack_down_hitbox_body_entered(body):
 	if body.get("TYPE") == "ENEMY":
 		body.hit(position)
+		armed = false
 
 func _on_attack_up_hitbox_body_entered(body):
 	if body.get("TYPE") == "ENEMY":
 		body.hit(position)
+		armed = false
 
 func _on_attack_forward_hitbox_body_entered(body):
 	if body.get("TYPE") == "ENEMY":
 		body.hit(position)
+		armed = false
 
 func _on_attack_crouch_hitbox_body_entered(body):
 	if body.get("TYPE") == "ENEMY":
 		body.hit(position)
+		armed = false
