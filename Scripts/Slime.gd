@@ -72,6 +72,7 @@ func hit(hit_pos):
 	alive = false
 
 func die():
+	menuMusic.get_node("hit").play(0)
 	var newJavelin = javelin.instance()
 	newJavelin.position = position
 	get_parent().add_child(newJavelin)

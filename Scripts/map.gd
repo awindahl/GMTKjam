@@ -8,7 +8,7 @@ var tempX
 var tempY
 
 func _ready():
-	menuMusic.stop()
+	menuMusic.get_node("menuMusic").stop()
 	playerEntity.position = get_node(str(level-1)).position
 	tempX = playerEntity.position.x - get_node(str(level)).position.x
 	tempY = playerEntity.position.y - get_node(str(level)).position.y

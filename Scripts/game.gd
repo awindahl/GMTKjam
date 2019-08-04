@@ -58,6 +58,7 @@ func _on_door6_body_entered(body):
 		transition.fade_to("res://Scenes/Game Over.tscn", 0.9)
 
 func updateLevel():
+	menuMusic.get_node("win").play(0)
 	removeEntities()
 	GameController.score += localScore
 	hud.updateScore(GameController.score)
@@ -90,6 +91,7 @@ func restartLevel():
 	spawnEntities()
 
 func gameOver():
+	menuMusic.get_node("hurt").play(0)
 	gameOver = true
 	hud.gameOver()
 
