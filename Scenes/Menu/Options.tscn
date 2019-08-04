@@ -51,7 +51,6 @@ anchor_top = 0.298333
 anchor_right = 0.164063
 anchor_bottom = 0.363333
 margin_top = -1.52588e-005
-disabled = true
 text = "Clear Data"
 __meta__ = {
 "_edit_use_anchors_": true
@@ -179,6 +178,7 @@ text = "https://sumaris.itch.io/"
 __meta__ = {
 "_edit_use_anchors_": true
 }
+[connection signal="pressed" from="Clear_Data_Btn" to="." method="_on_Clear_Data_Btn_pressed"]
 [connection signal="pressed" from="Back_Btn" to="." method="_on_Back_Btn_pressed"]
 [connection signal="pressed" from="GoldenGit" to="." method="_on_GoldenGit_pressed"]
 [connection signal="pressed" from="GoldenItch" to="." method="_on_GoldenItch_pressed"]
