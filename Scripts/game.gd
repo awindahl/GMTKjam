@@ -9,7 +9,7 @@ func _ready():
 	$Camera2D.global_position = get_node(str(level)).get_node("cameraStart").global_position
 	$Player.global_position = get_node(str(level)).get_node("playerStart").global_position
 	set_exit(exit)
-	
+
 #func _process(delta):
 	#detect game over
 	#detect pause
@@ -23,8 +23,8 @@ func movePlayer():
 	$Player.global_position = get_node(str(level)).get_node("playerStart").global_position
 
 func set_exit(var door):
-	door.get_node("StaticBody2D").set_collision_layer(2)
-	door.get_node("StaticBody2D").set_collision_mask(2)
+	door.get_node("StaticBody2D").set_collision_layer(4)
+	door.get_node("StaticBody2D").set_collision_mask(4)
 
 func reset_door(var door):
 	door.get_node("StaticBody2D").set_collision_layer(1)
