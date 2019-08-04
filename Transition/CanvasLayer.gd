@@ -2,6 +2,7 @@ extends CanvasLayer
 
 var path = ""
 var time = 1.0
+var loader: ResourceInteractiveLoader = null
 
 func fade_to(scn_path, scn_time = 1.0, specific_animation = "startFade"):
 	for i in get_tree().get_root().get_children():
@@ -14,6 +15,7 @@ func fade_to(scn_path, scn_time = 1.0, specific_animation = "startFade"):
 	if $AnimationPlayer.has_animation(specific_animation):
 		$AnimationPlayer.stop(true)
 		$AnimationPlayer.play(specific_animation, -1, time)
+		
 	else:
 		print("failed transition - reverting")
 		for i in get_tree().get_root().get_children():

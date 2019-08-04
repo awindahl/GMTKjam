@@ -9,6 +9,7 @@ extents = Vector2( 32, 32 )
 [node name="TestLevel" type="Node2D"]
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 0, -289 )
 scale = Vector2( 16.07, 0.46 )
 collision_layer = 524289
@@ -27,6 +28,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 0, 291 )
 scale = Vector2( 16.07, 0.46 )
 collision_layer = 524289
@@ -45,6 +47,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 500, -50 )
 rotation = 1.5708
 scale = Vector2( 7.15, 0.46 )
@@ -62,6 +65,7 @@ __meta__ = {
 }
 
 [node name="StaticBody2D6" type="StaticBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( -500, -50 )
 rotation = 1.5708
 scale = Vector2( 7.15, 0.46 )
@@ -79,8 +83,7 @@ __meta__ = {
 }
 
 [node name="SkeletonBomber" parent="." instance=ExtResource( 2 )]
-position = Vector2( -9.99999, -370 )
-scale = Vector2( 2.5, 2.5 )
+position = Vector2( 80, 210 )
 
 [node name="cameraStart" type="Position2D" parent="."]
 __meta__ = {

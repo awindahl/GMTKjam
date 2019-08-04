@@ -1271,6 +1271,7 @@ extents = Vector2( 7.18572, 1.24626 )
 extents = Vector2( 5, 9 )
 
 [node name="Player" type="KinematicBody2D"]
+scale = Vector2( 3, 3 )
 collision_layer = 11
 collision_mask = 11
 collision/safe_margin = 0.005
@@ -1338,6 +1339,7 @@ visible = false
 shape = SubResource( 20 )
 
 [node name="attack_crouch_hitbox" type="Area2D" parent="."]
+editor/display_folded = true
 visible = false
 position = Vector2( 6, 3 )
 monitoring = false
@@ -1346,6 +1348,7 @@ monitoring = false
 shape = SubResource( 21 )
 
 [node name="hitbox" type="Area2D" parent="."]
+editor/display_folded = true
 visible = false
 position = Vector2( -3, 0 )
 collision_layer = 9
