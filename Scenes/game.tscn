@@ -283,38 +283,6 @@ position = Vector2( 87.32, 414.178 )
 WALK_SPEED = 125
 JUMP_SPEED = 250
 
-[node name="Label" type="Label" parent="."]
-margin_left = 455.368
-margin_top = 144.63
-margin_right = 525.368
-margin_bottom = 172.63
-text = "level 1"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="."]
-margin_left = 1426.1
-margin_top = 131.063
-margin_right = 1496.1
-margin_bottom = 162.063
-text = "level 2
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label3" type="Label" parent="."]
-margin_left = 2506.86
-margin_top = 562.164
-margin_right = 2576.86
-margin_bottom = 593.164
-text = "level 3
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 513.592, 299.982 )
 current = true
