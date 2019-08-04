@@ -20,7 +20,6 @@ func _save():
 	var dict = { "0" : score, "1" : level}
 	file.store_line(to_json(dict));
 	file.close()
-	hasSave = true
 
 func _load():
 	var file = File.new();
