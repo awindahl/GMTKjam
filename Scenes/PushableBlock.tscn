@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/PushableBlockpng.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 24.32, 24.01 )
+extents = Vector2( 24.32, 22 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30.3963, 18.0736 )
