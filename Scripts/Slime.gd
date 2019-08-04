@@ -53,6 +53,7 @@ func _process(delta):
 		die()
 
 func rand():
+	randomize()
 	var d = randi() % 2 + 1
 	
 	match d:
@@ -62,7 +63,7 @@ func rand():
 			return RIGHT
 
 func hit(hit_pos):
-	knockDir = (hit_pos - position).normalized()
+	knockDir = (hit_pos - position).normalized() * -1
 	knockDir.y -= 1
 	alive = false
 

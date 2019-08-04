@@ -19,8 +19,8 @@ var anim
 var new_anim
 var attacking
 var attack_timer = 0
-var ammo = 1
-var bombs = 1
+var ammo = 0
+var bombs = 0
 var facing = 'right'
 
 # player variables
@@ -112,15 +112,15 @@ func control_loop():
 					
 				""" Handles crouching and crouch attacking """
 				if DOWN:
-					if attack_timer == 0:
+					if attack_timer == 0 and is_on_floor():
 						change_state(CROUCH)
 						
-					if Input.is_action_just_pressed("attack") and attack_timer == 0:
-						attack_timer = 20
+					if Input.is_action_just_pressed("attack") and attack_timer == 0 and is_on_floor():
+						attack_timer = 10
 						change_state(CROUCH_ATTACK)
 				
 				""" General attack function """
-				if Input.is_action_just_pressed("attack") and attack_timer == 0:
+				if Input.is_action_just_pressed("attack") and attack_timer == 0 and is_on_floor():
 					attack_timer = 20
 					change_state(ATTACK_FORWARD)
 				if !DOWN and attack_timer == 0:
@@ -133,22 +133,24 @@ func control_loop():
 					change_state(JUMP_ARMED)
 					linear_vel.y = -JUMP_SPEED
 			
-				""" in-air attacks """
-				if Input.is_action_just_pressed("attack") and attack_timer == 0 and !UP and !DOWN:
-						attack_timer = 20
-						change_state(ATTACK_FORWARD)
-				if Input.is_action_just_pressed("attack") and attack_timer == 0 and UP and !DOWN:
-						attack_timer = 20
-						change_state(ATTACK_UP)
-				if Input.is_action_just_pressed("attack") and attack_timer == 0 and !UP and DOWN:
-						attack_timer = 20
-						change_state(ATTACK_DOWN)
+				if not is_on_floor():
+					""" in-air attacks """
+					if Input.is_action_just_pressed("attack") and attack_timer == 0 and !UP and !DOWN:
+							attack_timer = 40
+							change_state(ATTACK_FORWARD)
+					if Input.is_action_just_pressed("attack") and attack_timer == 0 and UP and !DOWN:
+							attack_timer = 40
+							change_state(ATTACK_UP)
+					if Input.is_action_just_pressed("attack") and attack_timer == 0 and !UP and DOWN:
+							attack_timer = 40
+							change_state(ATTACK_DOWN)
 				
 		""" Changes the default state to IDLE """
 		if !RIGHT and !LEFT and !DOWN and !UP and state == RUN_ARMED and attack_timer == 0:
 			change_state(IDLE_ARMED)
 				
 		elif !armed:
+				print(attack_timer)
 			#if is_on_floor():
 				""" State and sprite direction is changed based on what 
 					direction is pressed if the player does not have any 
@@ -158,14 +160,14 @@ func control_loop():
 				if linear_vel.x == 0 and attack_timer == 0:
 					change_state(IDLE_NAKED)
 					
-				if LEFT and !RIGHT:
+				if LEFT and !RIGHT and attack_timer == 0:
 					change_state(RUN_NAKED)
 					
 					if not facing == 'left':
 						facing = 'left'
 						self.scale.x *= -1
 		
-				if RIGHT and !LEFT:
+				if RIGHT and !LEFT and attack_timer == 0:
 					change_state(RUN_NAKED)
 					
 					if not facing == 'right':
@@ -176,33 +178,33 @@ func control_loop():
 				
 				if Input.is_action_just_pressed("attack2") and attack_timer == 0 and ammo and not RIGHT and not LEFT:
 					ammo -= 1
-					attack_timer = 20
+					attack_timer = 40
 					change_state(ATTACK_JAVELIN)
 				
-				if Input.is_action_just_pressed("bomb") and attack_timer == 0 and bombs and not RIGHT and not LEFT:
+				if Input.is_action_just_pressed("bomb") and attack_timer == 0 and bombs and not RIGHT and not LEFT and is_on_floor():
 					bombs -= 1
-					attack_timer = 20
+					attack_timer = 40
 					change_state(ATTACK_BOMB)
 				
 				""" Makes sure the player can only jump while standing on the floor
 					also changes the state to IDLE to make sure the current animation
 					stops playing when "ui_accept" is pressed (but not held) """
-				if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+				if Input.is_action_just_pressed("ui_accept") and is_on_floor() and attack_timer == 0:
 					change_state(JUMP_NAKED)
 					linear_vel.y = -JUMP_SPEED
 				
 		""" Changes the default state to IDLE """
-		if !RIGHT and !LEFT and !DOWN and state == RUN_NAKED:
+		if !RIGHT and !LEFT and !DOWN and state == RUN_NAKED and attack_timer == 0:
 			change_state(IDLE_NAKED)
 			linear_vel.x = WALK_SPEED
-		
-		""" Linear velocity is updated to the movement function. """
-		linear_vel = move_and_slide(linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
 		
 		if state != JUMP_NAKED and state != JUMP_ARMED and is_on_floor() \
 				and not $Sprite/RayCast2D.is_colliding() and $Sprite/BlockCheck.is_colliding() \
 				and (RIGHT or LEFT):
 			change_state(PUSH)
+		
+		""" Linear velocity is updated to the movement function. """
+		linear_vel = move_and_slide(linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
 		
 	elif hitstun > 0:
 		""" Player is knocked away from target of damage and state is changed to show that """

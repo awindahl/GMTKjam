@@ -61,6 +61,7 @@ func _process(delta):
 		die()
 
 func rand():
+	randomize()
 	var d = randi() % 2 + 1
 	
 	match d:
@@ -72,7 +73,7 @@ func rand():
 func _vision():
 	for body in $Vision.get_overlapping_bodies():
 		if body is Player:
-			linearVel = (position - body.position).normalized()
+			linearVel = (position - body.position).normalized() * -1
 			isSeeingPlayer = true
 			$Point.visible = true
 		else:
@@ -97,6 +98,6 @@ func _on_Hitbox_body_entered(body):
 		linearVel.x = 0 
 
 func hit(hit_pos):
-	knockVel = (hit_pos - position).normalized()
+	knockVel = (hit_pos - position).normalized() * -1
 	knockVel.y -= 3
 	alive = false
