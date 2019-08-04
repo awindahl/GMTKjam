@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Sounds/music/Castle Von Krumpen.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Assets/Sounds/effects/coin.wav" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Sounds/music/Memoraphile.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Scripts/music.gd" type="Script" id=4]
+
+[node name="menuMusic" type="AudioStreamPlayer"]
+pause_mode = 2
+stream = ExtResource( 1 )
+autoplay = true
+script = ExtResource( 4 )
+
+[node name="gameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="coin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+[connection signal="finished" from="." to="." method="_on_menuMusic_finished"]
+[connection signal="finished" from="gameMusic" to="." method="_on_gameMusic_finished"]

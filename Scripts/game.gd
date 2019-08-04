@@ -16,6 +16,7 @@ func _ready():
 	$Camera2D.global_position = get_node(str(level)).get_node("cameraStart").global_position
 	$Player.global_position = get_node(str(level)).get_node("playerStart").global_position
 	set_exit(exit)
+	menuMusic.get_node("gameMusic").play(0)
 	updateHudScore(GameController.score)
 	updateHudLevel(GameController.level)
 	spawnEntities()
