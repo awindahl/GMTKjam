@@ -1,0 +1,163 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Assets/Stairs.png" type="Texture" id=1]
+[ext_resource path="res://Assets/hud.png" type="Texture" id=2]
+[ext_resource path="res://Assets/swordIcon.png" type="Texture" id=3]
+[ext_resource path="res://Assets/pause.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/hud.gd" type="Script" id=5]
+[ext_resource path="res://Assets/unarmedIcon.png" type="Texture" id=6]
+[ext_resource path="res://Assets/coin.png" type="Texture" id=7]
+[ext_resource path="res://Assets/bombIcon.png" type="Texture" id=8]
+[ext_resource path="res://Assets/javelinIcon.png" type="Texture" id=9]
+[ext_resource path="res://Assets/youdied.png" type="Texture" id=10]
+[ext_resource path="res://Assets/pauseText.png" type="Texture" id=11]
+
+[node name="hud" type="Node2D"]
+pause_mode = 2
+position = Vector2( 512, 300 )
+script = ExtResource( 5 )
+
+[node name="pause" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.737255 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="pauseLabel" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 11 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="gameOver" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="hud" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="floor" type="Sprite" parent="."]
+position = Vector2( 442.502, -263.858 )
+scale = Vector2( 1.64168, 1.64168 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="floorNr" type="Label" parent="."]
+margin_left = 453.264
+margin_top = -284.7
+margin_right = 476.264
+margin_bottom = -261.7
+rect_scale = Vector2( 2, 2 )
+text = "0"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="scoreNr" type="Label" parent="."]
+margin_left = 372.415
+margin_top = -284.7
+margin_right = 395.415
+margin_bottom = -261.7
+rect_scale = Vector2( 2, 2 )
+text = "0"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="score" type="Sprite" parent="."]
+position = Vector2( 361.141, -264.205 )
+scale = Vector2( 1.95248, 1.95248 )
+texture = ExtResource( 7 )
+
+[node name="equipFist" type="Sprite" parent="."]
+visible = false
+position = Vector2( -471.868, 255.496 )
+scale = Vector2( 4.29777, 4.29777 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="equipSword" type="Sprite" parent="."]
+visible = false
+position = Vector2( -471.868, 255.496 )
+scale = Vector2( 4.29777, 4.29777 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="equipJavelin" type="Sprite" parent="."]
+visible = false
+position = Vector2( -471.868, 255.496 )
+scale = Vector2( 4.29777, 4.29777 )
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="equipBomb" type="Sprite" parent="."]
+visible = false
+position = Vector2( -471.868, 255.496 )
+scale = Vector2( 4.29777, 4.29777 )
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="quitBtn" type="Button" parent="."]
+margin_left = -496.46
+margin_top = -282.487
+margin_right = -455.46
+margin_bottom = -244.487
+text = "quit"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="pauseBtn" type="Button" parent="."]
+margin_left = -436.46
+margin_top = -282.487
+margin_right = -395.46
+margin_bottom = -244.487
+focus_mode = 0
+enabled_focus_mode = 0
+text = "pause"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="restartBtn" type="Button" parent="."]
+margin_left = -366.46
+margin_top = -282.487
+margin_right = -316.46
+margin_bottom = -244.487
+text = "restart"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="quitBtn" to="." method="_on_quitBtn_pressed"]
+[connection signal="pressed" from="pauseBtn" to="." method="_on_pauseBtn_pressed"]
+[connection signal="pressed" from="restartBtn" to="." method="_on_restartBtn_pressed"]

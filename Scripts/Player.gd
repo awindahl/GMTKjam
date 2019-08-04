@@ -28,6 +28,7 @@ func _hit(dir):
 	knock_dir = (position - dir).normalized() * -1
 	knock_dir.y = -4
 	change_state(DAMAGED)
+	get_parent().gameOver()
 
 func _shoot():
 	new_javelin = javelin.instance()
@@ -36,6 +37,10 @@ func _shoot():
 func _bomb():
 	new_bomb = bomb.instance()
 	get_parent().add_child(new_bomb)
+
+func _reset():
+	change_state(IDLE_NAKED)
+	hitstun = 0
 
 func _on_attack_down_hitbox_body_entered(body):
 	if body.get("TYPE") == "ENEMY":
