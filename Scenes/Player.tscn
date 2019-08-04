@@ -1290,7 +1290,7 @@ cast_to = Vector2( 16.44, 0 )
 collision_mask = 16
 
 [node name="BlockCheck" type="RayCast2D" parent="Sprite"]
-position = Vector2( -7, 0 )
+position = Vector2( -3, 0 )
 enabled = true
 cast_to = Vector2( 12.75, 0 )
 collision_mask = 262144

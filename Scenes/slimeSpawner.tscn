@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/spawnSlime.gd" type="Script" id=1]
 [ext_resource path="res://Assets/SlimeSpawner.png" type="Texture" id=2]
 
-[node name="skeletonSpawner" type="Node2D"]
+[node name="slimeSpawner" type="Node2D"]
 scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 

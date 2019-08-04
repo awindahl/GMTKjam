@@ -9,6 +9,7 @@ var linearVel = Vector2(0,0)
 var knockVel = Vector2(0,0)
 var isSeeingPlayer = false
 onready var bombDrop = preload("res://Scenes/BombPickup.tscn")
+onready var bombExplode = preload("res://Scenes/Bomb.tscn")
 
 export var SPEED = 70
 
@@ -57,10 +58,12 @@ func _process(delta):
 		knockVel.y += 0.1
 		move_and_slide(knockVel * SPEED)
 	
-	if knockVel.y > 3 and not alive:
+	if not alive and knockVel.y > 3 and $FloorCheck.is_colliding():
 		die()
+	
 
 func rand():
+	randomize()
 	var d = randi() % 2 + 1
 	
 	match d:
@@ -80,11 +83,16 @@ func _vision():
 			$Point.visible = true
 		
 func die():
-	if not gonnaExplode:
-		var newBomb = bombDrop.instance()
-		newBomb.position = position
-		newBomb.position.y += 20
-		get_parent().add_child(newBomb)
+	var newBomb = bombDrop.instance()
+	newBomb.position = position
+	newBomb.position.y += 20
+	get_parent().add_child(newBomb)
+	
+	var newExplode = bombExplode.instance()
+	newExplode.position = position
+	newExplode.position.y += 20
+	get_parent().add_child(newExplode
+	)
 	queue_free()
 
 func _on_Hitbox_body_entered(body):
@@ -100,3 +108,4 @@ func hit(hit_pos):
 	knockVel = (hit_pos - position).normalized()
 	knockVel.y -= 3
 	alive = false
+	animationPlayer.play("Skele_explode")

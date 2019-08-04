@@ -4,6 +4,7 @@ var gameOver = false
 var localScore = 0
 onready var hud = $CanvasLayer/hud 
 onready var level = GameController.level
+onready var player = GameController.player
 onready var exit = get_node("door"+ str(level+1))
 
 #	remember to go to Export, 
@@ -35,9 +36,6 @@ func reset_door(var door):
 	door.get_node("StaticBody2D").set_collision_layer(1)
 	door.get_node("StaticBody2D").set_collision_mask(1)
 	
-func _on_door1_body_entered(body):
-	if body.get("TYPE") == "PLAYER" and exit == $door1:
-		print("you can not escape")
 
 func _on_door2_body_entered(body):
 	if body.get("TYPE") == "PLAYER" and exit == $door2:
@@ -49,7 +47,7 @@ func _on_door3_body_entered(body):
 
 func _on_door4_body_entered(body):
 	if body.get("TYPE") == "PLAYER" and exit == $door4:
-		print("you win!")
+		updateLevel()
 
 func updateLevel():
 	removeEntities()
@@ -58,6 +56,10 @@ func updateLevel():
 	localScore = 0
 	level = level+1
 	updateHudLevel()
+	player.ammo = 0
+	player.bombs = 0
+	player.armed = false
+	hud.equip("UNARMED")
 	GameController.level = level
 	GameController._save()
 	spawnEntities()
@@ -72,6 +74,7 @@ func restartLevel():
 	removeEntities()
 	$Player.global_position = get_node(str(level)).get_node("playerStart").global_position
 	$Player._reset()
+	hud.equip("UNARMED")
 	if gameOver:
 		gameOver = false
 	localScore = 0

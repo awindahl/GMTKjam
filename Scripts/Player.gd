@@ -38,6 +38,7 @@ func _shoot():
 	
 func _bomb():
 	new_bomb = bomb.instance()
+	new_bomb.position = position
 	get_parent().add_child(new_bomb)
 	_updateHudUnarmed()
 
