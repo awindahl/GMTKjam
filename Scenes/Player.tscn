@@ -1289,6 +1289,12 @@ enabled = true
 cast_to = Vector2( 16.44, 0 )
 collision_mask = 16
 
+[node name="BlockCheck" type="RayCast2D" parent="Sprite"]
+position = Vector2( -7, 0 )
+enabled = true
+cast_to = Vector2( 12.75, 0 )
+collision_mask = 262144
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.633293, 0 )
 scale = Vector2( 0.90953, 1 )

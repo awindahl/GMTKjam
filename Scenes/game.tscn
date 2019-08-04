@@ -143,6 +143,7 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 87.32, 514.178 )
 WALK_SPEED = 75
+JUMP_SPEED = 250
 
 [node name="Label" type="Label" parent="."]
 margin_left = 455.368

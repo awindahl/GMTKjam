@@ -173,12 +173,16 @@ func control_loop():
 			""" Changes the default state to IDLE """
 			if !RIGHT and !LEFT and !DOWN and state == RUN_NAKED:
 				change_state(IDLE_NAKED)
+				linear_vel.x = WALK_SPEED
 		
 		""" Linear velocity is updated to the movement function. """
 		linear_vel = move_and_slide(linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
 		
-		if is_on_wall() and state != JUMP_NAKED and state != JUMP_ARMED and is_on_floor() and not $Sprite/RayCast2D.is_colliding():
+		if state != JUMP_NAKED and state != JUMP_ARMED and is_on_floor() \
+				and not $Sprite/RayCast2D.is_colliding() and $Sprite/BlockCheck.is_colliding() \
+				and (RIGHT or LEFT):
 			change_state(PUSH)
+		
 		
 	elif hitstun > 0:
 		""" Player is knocked away from target of damage and state is changed to show that """
