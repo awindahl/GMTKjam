@@ -3,6 +3,7 @@ extends Node
 var score = 0
 var level = 1
 var hasSave = false
+var player
 
 var enemy = []
 var coinSpawner = []

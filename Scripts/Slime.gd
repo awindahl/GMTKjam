@@ -63,7 +63,7 @@ func rand():
 
 func hit(hit_pos):
 	knockDir = (hit_pos - position).normalized()
-	knockDir.y -= 2
+	knockDir.y -= 1
 	alive = false
 
 func die():

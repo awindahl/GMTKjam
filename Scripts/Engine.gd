@@ -19,8 +19,9 @@ var anim
 var new_anim
 var attacking
 var attack_timer = 0
-var ammo = false
-var bombs = false
+var ammo = 1
+var bombs = 0
+var facing = 'right'
 
 # player variables
 export var WALK_SPEED = 45
@@ -86,24 +87,34 @@ func control_loop():
 		
 		""" Checks whether or not the player has been armed """
 		if armed:
-			if is_on_floor():
+			#if is_on_floor():
 				""" State and sprite direction is changed based on what 
 					direction is pressed if the player does not have any 
 					velocity in the x-axis, the state changes to IDLE """
 				linear_vel.x = -int(LEFT) + int(RIGHT)
+				
 				if linear_vel.x == 0 and attack_timer == 0:
 					change_state(IDLE_ARMED)
+					
 				if LEFT and !RIGHT and !DOWN and attack_timer == 0:
 					change_state(RUN_ARMED)
-					$Sprite.flip_h = true
+					
+					if not facing == 'left':
+						facing = 'left'
+						self.scale.x *= -1
+						
 				if RIGHT and !LEFT and !DOWN and attack_timer == 0:
 					change_state(RUN_ARMED)
-					$Sprite.flip_h = false
+					
+					if not facing == 'right':
+						facing = 'right'
+						self.scale.x *= -1
 					
 				""" Handles crouching and crouch attacking """
 				if DOWN:
 					if attack_timer == 0:
 						change_state(CROUCH)
+						
 					if Input.is_action_just_pressed("attack") and attack_timer == 0:
 						attack_timer = 20
 						change_state(CROUCH_ATTACK)
@@ -118,39 +129,49 @@ func control_loop():
 				""" Makes sure the player can only jump while standing on the floor
 					also changes the state to IDLE to make sure the current animation
 					stops playing when "ui_accept" is pressed (but not held) """
-				if Input.is_action_just_pressed("ui_accept") and attack_timer == 0:
+				if Input.is_action_just_pressed("ui_accept") and attack_timer == 0 and is_on_floor():
 					change_state(JUMP_ARMED)
 					linear_vel.y = -JUMP_SPEED
+			
+				""" in-air attacks """
+				if Input.is_action_just_pressed("attack") and attack_timer == 0 and !UP and !DOWN:
+						attack_timer = 20
+						change_state(ATTACK_FORWARD)
+				if Input.is_action_just_pressed("attack") and attack_timer == 0 and UP and !DOWN:
+						attack_timer = 20
+						change_state(ATTACK_UP)
+				if Input.is_action_just_pressed("attack") and attack_timer == 0 and !UP and DOWN:
+						attack_timer = 20
+						change_state(ATTACK_DOWN)
 				
-			""" in-air attacks """
-			if Input.is_action_just_pressed("attack") and attack_timer == 0 and !UP and !DOWN:
-					attack_timer = 20
-					change_state(ATTACK_FORWARD)
-			if Input.is_action_just_pressed("attack") and attack_timer == 0 and UP and !DOWN:
-					attack_timer = 20
-					change_state(ATTACK_UP)
-			if Input.is_action_just_pressed("attack") and attack_timer == 0 and !UP and DOWN:
-					attack_timer = 20
-					change_state(ATTACK_DOWN)
-					
-			""" Changes the default state to IDLE """
-			if !RIGHT and !LEFT and !DOWN and !UP and state == RUN_ARMED and attack_timer == 0:
-				change_state(IDLE_ARMED)
+		""" Changes the default state to IDLE """
+		if !RIGHT and !LEFT and !DOWN and !UP and state == RUN_ARMED and attack_timer == 0:
+			change_state(IDLE_ARMED)
 				
 		elif !armed:
-			if is_on_floor():
+			#if is_on_floor():
 				""" State and sprite direction is changed based on what 
 					direction is pressed if the player does not have any 
 					velocity in the x-axis, the state changes to IDLE """
 				linear_vel.x = -int(LEFT) + int(RIGHT)
+				
 				if linear_vel.x == 0 and attack_timer == 0:
 					change_state(IDLE_NAKED)
+					
 				if LEFT and !RIGHT:
 					change_state(RUN_NAKED)
-					$Sprite.flip_h = true
+					
+					if not facing == 'left':
+						facing = 'left'
+						self.scale.x *= -1
+		
 				if RIGHT and !LEFT:
 					change_state(RUN_NAKED)
-					$Sprite.flip_h = false
+					
+					if not facing == 'right':
+						facing = 'right'
+						self.scale.x *= -1
+				
 				linear_vel.x *= WALK_SPEED
 				
 				if Input.is_action_just_pressed("attack2") and attack_timer == 0 and ammo:
@@ -166,14 +187,14 @@ func control_loop():
 				""" Makes sure the player can only jump while standing on the floor
 					also changes the state to IDLE to make sure the current animation
 					stops playing when "ui_accept" is pressed (but not held) """
-				if Input.is_action_just_pressed("ui_accept"):
+				if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 					change_state(JUMP_NAKED)
 					linear_vel.y = -JUMP_SPEED
 				
-			""" Changes the default state to IDLE """
-			if !RIGHT and !LEFT and !DOWN and state == RUN_NAKED:
-				change_state(IDLE_NAKED)
-				linear_vel.x = WALK_SPEED
+		""" Changes the default state to IDLE """
+		if !RIGHT and !LEFT and !DOWN and state == RUN_NAKED:
+			change_state(IDLE_NAKED)
+			linear_vel.x = WALK_SPEED
 		
 		""" Linear velocity is updated to the movement function. """
 		linear_vel = move_and_slide(linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP)

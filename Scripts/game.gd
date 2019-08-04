@@ -2,7 +2,7 @@ extends Node
 
 var gameOver = false
 var localScore = 0
-onready var hud = $Camera2D/hud 
+onready var hud = $CanvasLayer/hud 
 onready var level = GameController.level
 onready var exit = get_node("door"+ str(level+1))
 
@@ -49,7 +49,7 @@ func _on_door4_area_entered(area):
 
 func updateLevel():
 	removeEntities()
-	GameController.score = GameController+localScore
+	GameController.score = GameController.score+localScore
 	localScore = 0
 	level = level+1
 	updateHudLevel()
