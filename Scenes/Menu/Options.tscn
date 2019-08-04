@@ -1,0 +1,186 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Credits/sumaris.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Credits/alewin.png" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Options.gd" type="Script" id=4]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.721569, 0.0666667, 0.0666667, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="Mute_Btn" type="Button" parent="."]
+anchor_left = 0.0429688
+anchor_top = 0.0983333
+anchor_right = 0.164063
+anchor_bottom = 0.163333
+margin_bottom = 7.62939e-006
+disabled = true
+text = "Toggle Sound"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Fullscreen_Btn" type="Button" parent="."]
+anchor_left = 0.0432711
+anchor_top = 0.199066
+anchor_right = 0.163388
+anchor_bottom = 0.264066
+margin_top = 7.62939e-006
+margin_right = -5.0
+disabled = true
+text = "Toggle Fullscreen"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Clear_Data_Btn" type="Button" parent="."]
+anchor_left = 0.0429688
+anchor_top = 0.298333
+anchor_right = 0.164063
+anchor_bottom = 0.363333
+margin_top = -1.52588e-005
+disabled = true
+text = "Clear Data"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Back_Btn" type="Button" parent="."]
+anchor_left = 0.0429688
+anchor_top = 0.815
+anchor_right = 0.161133
+anchor_bottom = 0.88
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.539063
+anchor_top = 0.0396376
+anchor_right = 0.974609
+anchor_bottom = 0.0729709
+margin_bottom = -3.8147e-006
+text = "Made by:"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+anchor_left = 0.539063
+anchor_top = 0.64
+anchor_right = 0.974609
+anchor_bottom = 0.946667
+text = "This part is for extra text related to credits for music or art creators
+if we are going to use that sort of thing - or we can just add some closing words and such to let people know things we want them to know.
+
+
+
+
+- Stay hydrated"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Golden" type="TextureRect" parent="."]
+anchor_left = 0.537109
+anchor_top = 0.0833333
+anchor_right = 0.68457
+anchor_bottom = 0.335
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Sumaris" type="TextureRect" parent="."]
+anchor_left = 0.537637
+anchor_top = 0.358917
+anchor_right = 0.685098
+anchor_bottom = 0.610584
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.69392
+anchor_top = 0.0846564
+anchor_right = 0.738841
+anchor_bottom = 0.10799
+margin_right = -6.0
+text = "Golden"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label2" type="Label" parent="."]
+anchor_left = 0.69392
+anchor_top = 0.359656
+anchor_right = 0.743724
+anchor_bottom = 0.38299
+margin_right = -5.0
+text = "Sumaris"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="GoldenGit" type="LinkButton" parent="."]
+anchor_left = 0.697266
+anchor_top = 0.131667
+anchor_right = 0.873047
+anchor_bottom = 0.155
+margin_right = -140.0
+text = "https://github.com/awindahl"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="GoldenItch" type="LinkButton" parent="."]
+anchor_left = 0.697266
+anchor_top = 0.181667
+anchor_right = 0.874023
+anchor_bottom = 0.205
+text = "https://goldenapples.itch.io/"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="SumGit" type="LinkButton" parent="."]
+anchor_left = 0.697266
+anchor_top = 0.398333
+anchor_right = 0.868164
+anchor_bottom = 0.421667
+margin_bottom = 1.52588e-005
+text = "https://github.com/Sumaris"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="SumItch" type="LinkButton" parent="."]
+anchor_left = 0.697266
+anchor_top = 0.448333
+anchor_right = 0.84082
+anchor_bottom = 0.471667
+text = "https://sumaris.itch.io/"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+[connection signal="pressed" from="Back_Btn" to="." method="_on_Back_Btn_pressed"]
+[connection signal="pressed" from="GoldenGit" to="." method="_on_GoldenGit_pressed"]
+[connection signal="pressed" from="GoldenItch" to="." method="_on_GoldenItch_pressed"]
+[connection signal="pressed" from="SumGit" to="." method="_on_SumGit_pressed"]
+[connection signal="pressed" from="SumItch" to="." method="_on_SumItch_pressed"]
