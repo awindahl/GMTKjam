@@ -62,7 +62,7 @@ func updateLevel():
 	set_exit(exit)
 	panCam()
 	movePlayer()
-	
+
 func restartLevel():
 	removeEntities()
 	$Player.global_position = get_node(str(level)).get_node("playerStart").global_position

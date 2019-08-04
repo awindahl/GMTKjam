@@ -65,13 +65,13 @@ func equip(var type):
 	javelin.hide()
 	bomb.hide()
 	match type:
-		"unarmed":
+		"UNARMED":
 			fist.show()
-		"sword":
+		"SWORD":
 			sword.show()
-		"javelin":
+		"JAVELIN":
 			javelin.show()
-		"bomb":
+		"BOMB":
 			bomb.show()
 
 func addScore(var num):

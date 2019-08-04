@@ -19,8 +19,8 @@ var anim
 var new_anim
 var attacking
 var attack_timer = 0
-var ammo = 1
-var bombs = 1
+var ammo = 0
+var bombs = 0
 var facing = 'right'
 
 # player variables
