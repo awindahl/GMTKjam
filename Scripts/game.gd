@@ -1,5 +1,8 @@
 extends Node
 
+var gameOver = false
+var localScore = 0
+onready var hud = $Camera2D/hud 
 onready var level = GameController.level
 onready var exit = get_node("door"+ str(level+1))
 
@@ -9,10 +12,11 @@ func _ready():
 	$Camera2D.global_position = get_node(str(level)).get_node("cameraStart").global_position
 	$Player.global_position = get_node(str(level)).get_node("playerStart").global_position
 	set_exit(exit)
+	updateHudScore(GameController.score)
+	updateHudLevel(GameController.level)
 
 #func _process(delta):
 	#detect game over
-	#detect pause
 	#detect score update
 	
 func panCam():
@@ -47,7 +51,10 @@ func _on_door4_area_entered(area):
 		print("you win!")
 
 func updateLevel():
+	GameController.score = GameController+localScore
+	localScore = 0
 	level = level+1
+	updateHudLevel()
 	GameController.level = level
 	GameController._save()
 	reset_door(exit)
@@ -55,3 +62,26 @@ func updateLevel():
 	set_exit(exit)
 	panCam()
 	movePlayer()
+
+func restartLevel():
+	print("restarting")
+	$Player.global_position = get_node(str(level)).get_node("playerStart").global_position
+	$Player._reset()
+	if gameOver:
+		gameOver = false
+	#respawn enemies
+	#respawn pickups
+	localScore = 0
+
+func gameOver():
+	gameOver = true
+	hud.gameOver()
+
+func equip(var item):
+	hud.equip(item)
+
+func updateHudScore(var num = 1):
+	hud.addScore(num)
+	
+func updateHudLevel(var num = 1):
+	hud.addLevel(num)

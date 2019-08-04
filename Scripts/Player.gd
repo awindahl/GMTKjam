@@ -28,6 +28,7 @@ func _hit(dir):
 	knock_dir = (position - dir).normalized()
 	knock_dir.y = -4
 	change_state(DAMAGED)
+	get_parent().gameOver()
 
 func _shoot():
 	new_javelin = javelin.instance()
@@ -36,3 +37,7 @@ func _shoot():
 func _bomb():
 	new_bomb = bomb.instance()
 	get_parent().add_child(new_bomb)
+
+func _reset():
+	change_state(IDLE_NAKED)
+	hitstun = 0
