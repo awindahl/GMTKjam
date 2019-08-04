@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Memoraphile.ogg-47b2a65f76455133f17275ed70c2385b.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/music/Memoraphile.ogg"
+dest_files=[ "res://.import/Memoraphile.ogg-47b2a65f76455133f17275ed70c2385b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

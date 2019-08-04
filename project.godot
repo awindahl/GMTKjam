@@ -34,6 +34,7 @@ config/icon="res://Assets/swordIcon.png"
 
 GameController="*res://Scripts/GameController.gd"
 transition="*res://Transition/transition.tscn"
+menuMusic="*res://Scenes/menuMusic.tscn"
 
 [debug]
 

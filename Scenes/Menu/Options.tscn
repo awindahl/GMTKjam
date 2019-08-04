@@ -140,13 +140,16 @@ anchor_left = 0.539063
 anchor_top = 0.64
 anchor_right = 0.974609
 anchor_bottom = 0.946667
-text = "This part is for extra text related to credits for music or art creators
-if we are going to use that sort of thing - or we can just add some closing words and such to let people know things we want them to know.
+text = "Sounds and music used in this game come from opengameart.org from the following:
+
+Spring - \"Castle Von Krumpen\" 
+https://opengameart.org/content/castle-von-krumpen
+
+You're Perfect Studio - \"Memoraphile - Spooky dungeon\" 
+https://opengameart.org/content/spooky-dungeon
 
 
-
-
-- Stay hydrated"
+soundeffects created with jfxr - https://jfxr.frozenfractal.com/#"
 __meta__ = {
 "_edit_use_anchors_": true
 }

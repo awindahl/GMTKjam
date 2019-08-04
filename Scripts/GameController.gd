@@ -4,6 +4,7 @@ var score = 0
 var level = 1
 var hasSave = false
 var player
+var gameWon = false
 
 var enemy = []
 var coinSpawner = []
