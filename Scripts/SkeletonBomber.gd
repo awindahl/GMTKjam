@@ -81,7 +81,11 @@ func _vision():
 			$Point.visible = true
 		
 func die():
-	get_parent().add_child(bombDrop.instance())
+	if not gonnaExplode:
+		var newBomb = bombDrop.instance()
+		newBomb.position = position
+		newBomb.position.y += 20
+		get_parent().add_child(newBomb)
 	queue_free()
 
 func _on_Hitbox_body_entered(body):

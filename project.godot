@@ -35,6 +35,10 @@ _global_script_class_icons={
 config/name="GMTKjam"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameController="*res://Scripts/GameController.gd"
+
 [debug]
 
 gdscript/warnings/enable=false
