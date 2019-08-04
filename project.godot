@@ -1,0 +1,86 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Scripts/SkeletonBomber.gd"
+} ]
+_global_script_class_icons={
+"Enemy": ""
+}
+
+[application]
+
+config/name="GMTKjam"
+run/main_scene="res://Scenes/Menu/MainMenu.tscn"
+config/icon="res://icon.png"
+
+<<<<<<< HEAD
+[autoload]
+
+transition="*res://Transition/transition.tscn"
+GameController="*res://Scripts/GameController.gd"
+
+[display]
+
+window/size/resizable=false
+window/stretch/aspect="keep_width"
+=======
+[debug]
+
+gdscript/warnings/enable=false
+>>>>>>> 7ebc2104431bff5e4501fd424104e5188e43c256
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[input]
+
+attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"unicode":0,"echo":false,"script":null)
+ ]
+}
+attack2={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":88,"unicode":0,"echo":false,"script":null)
+ ]
+}
+bomb={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777238,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

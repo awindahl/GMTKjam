@@ -1,0 +1,125 @@
+<<<<<<< HEAD
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+=======
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/SkeletonBomber.tscn" type="PackedScene" id=3]
+>>>>>>> 7ebc2104431bff5e4501fd424104e5188e43c256
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+<<<<<<< HEAD
+position = Vector2( -4.76837e-007, 288.55 )
+scale = Vector2( 15.99, 0.46 )
+=======
+editor/display_folded = true
+scale = Vector2( 12.23, 0.46 )
+collision_layer = 524289
+collision_mask = 524289
+>>>>>>> 7ebc2104431bff5e4501fd424104e5188e43c256
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2( 10, -280 )
+scale = Vector2( 15.71, 0.685597 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D4"]
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 280, -180 )
+scale = Vector2( 12.23, 0.46 )
+collision_layer = 524289
+collision_mask = 524289
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D3"]
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( 500, -60 )
+rotation = 1.5708
+scale = Vector2( 7.3573, 0.460308 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D2"]
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2( -500, -61.1691 )
+rotation = 1.5708
+scale = Vector2( 7.46211, 0.460011 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D3"]
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="playerStart" type="Position2D" parent="."]
+position = Vector2( -440, 220 )
+__meta__ = {
+"_gizmo_extents_": 29.4
+}
+
+<<<<<<< HEAD
+[node name="cameraStart" type="Position2D" parent="."]
+__meta__ = {
+"_gizmo_extents_": 29.4
+}
+=======
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( -240, -50 )
+scale = Vector2( 4, 4 )
+JUMP_SPEED = 250
+armed = true
+
+[node name="SkeletonBomber" parent="." instance=ExtResource( 3 )]
+position = Vector2( -60, -80 )
+scale = Vector2( 2.5, 2.5 )
+>>>>>>> 7ebc2104431bff5e4501fd424104e5188e43c256
