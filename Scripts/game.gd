@@ -49,6 +49,14 @@ func _on_door4_body_entered(body):
 	if body.get("TYPE") == "PLAYER" and exit == $door4:
 		updateLevel()
 
+func _on_door5_body_entered(body):
+	if body.get("TYPE") == "PLAYER" and exit == $door5:
+		updateLevel()
+		
+func _on_door6_body_entered(body):
+	if body.get("TYPE") == "PLAYER" and exit == $door6:
+		transition.fade_to("res://Scenes/Game Over.tscn", 0.9)
+
 func updateLevel():
 	removeEntities()
 	GameController.score += localScore

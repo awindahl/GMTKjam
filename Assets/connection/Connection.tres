@@ -1,0 +1,9 @@
+[gd_resource type="DynamicFont" load_steps=3 format=2]
+
+[ext_resource path="res://Assets/fonts/connection/ConnectionBold.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/fonts/savior fonts/Savior1.ttf" type="DynamicFontData" id=2]
+
+[resource]
+size = 32
+font_data = ExtResource( 2 )
+fallback/0 = ExtResource( 1 )
