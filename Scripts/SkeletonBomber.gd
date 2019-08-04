@@ -4,6 +4,7 @@ class_name Enemy
 const CENTER = Vector2(0,0)
 const LEFT = Vector2(-1,0)
 const RIGHT = Vector2(1,0)
+const TYPE = "ENEMY"
 
 var linearVel = Vector2(0,0)
 var knockVel = Vector2(0,0)
@@ -26,6 +27,7 @@ func _ready():
 		
 	moveDir = rand()
 	linearVel = moveDir.normalized()
+	isSeeingPlayer = false
 
 func _process(delta):
 	
@@ -37,7 +39,7 @@ func _process(delta):
 	if moveTimer > 0:
 		moveTimer -= 1
 	
-	if moveTimer == 0:
+	if moveTimer == 0 and not isSeeingPlayer:
 		moveDir = rand()
 		linearVel = moveDir.normalized()
 		moveTimer = moveTimerLength
@@ -56,8 +58,6 @@ func _process(delta):
 		knockVel.y += 0.1
 		move_and_slide(knockVel * SPEED)
 	
-	print($RayCast2D.rotation_degrees)
-	
 	if knockVel.y > 3 and not alive:
 		die()
 
@@ -72,8 +72,8 @@ func rand():
 
 func _vision():
 	for body in $Vision.get_overlapping_bodies():
-		if body.get("TYPE") == "PLAYER":
-			linearVel = (position - body.position).normalized() * -1
+		if body is Player:
+			linearVel = (position - body.position).normalized()
 			isSeeingPlayer = true
 			$Point.visible = true
 		else:
@@ -98,6 +98,6 @@ func _on_Hitbox_body_entered(body):
 		linearVel.x = 0 
 
 func hit(hit_pos):
-	knockVel = (hit_pos - position).normalized() * -1
+	knockVel = (hit_pos - position).normalized()
 	knockVel.y -= 3
 	alive = false

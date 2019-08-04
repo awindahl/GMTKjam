@@ -84,7 +84,6 @@ __meta__ = {
 
 [node name="SkeletonBomber" parent="." instance=ExtResource( 2 )]
 position = Vector2( 80, 210 )
-scale = Vector2( 3, 3 )
 
 [node name="cameraStart" type="Position2D" parent="."]
 __meta__ = {

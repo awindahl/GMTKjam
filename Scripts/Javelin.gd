@@ -21,5 +21,5 @@ func _on_TimeToLive_timeout():
 	queue_free()
 
 func _on_Javelin_body_entered(body):
-	if body is Enemy:
+	if body.get("TYPE") == "ENEMY":
 		body.hit(position)
