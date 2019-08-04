@@ -21,3 +21,7 @@ func _on_SumItch_pressed():
 
 func _on_Back_Btn_pressed():
 	transition.fade_to("res://Scenes/Menu/MainMenu.tscn", 0.9, "startSlide")
+
+
+func _on_Clear_Data_Btn_pressed():
+	GameController.deleteSave()

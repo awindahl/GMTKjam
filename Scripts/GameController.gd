@@ -28,3 +28,8 @@ func _load():
 	score = save["0"]
 	level = save["1"]
 	file.close()
+
+func deleteSave():
+	var dir = Directory.new()
+	dir.remove(filepath)
+	hasSave = false
