@@ -34,31 +34,43 @@ func _hit(dir):
 func _shoot():
 	new_javelin = javelin.instance()
 	get_parent().add_child(new_javelin)
+	_updateHudUnarmed()
 	
 func _bomb():
 	new_bomb = bomb.instance()
 	get_parent().add_child(new_bomb)
+	_updateHudUnarmed()
 
+func _updateHudUnarmed():
+	get_parent().equip("UNARMED")
+	
 func _reset():
 	change_state(IDLE_NAKED)
+	ammo = 0
+	bombs = 0
+	armed = false
 	hitstun = 0
 
 func _on_attack_down_hitbox_body_entered(body):
 	if body.get("TYPE") == "ENEMY":
 		body.hit(position)
 		armed = false
-
+		_updateHudUnarmed()
+		
 func _on_attack_up_hitbox_body_entered(body):
 	if body.get("TYPE") == "ENEMY":
 		body.hit(position)
 		armed = false
-
+		_updateHudUnarmed()
+		
 func _on_attack_forward_hitbox_body_entered(body):
 	if body.get("TYPE") == "ENEMY":
 		body.hit(position)
 		armed = false
-
+		_updateHudUnarmed()
+		
 func _on_attack_crouch_hitbox_body_entered(body):
 	if body.get("TYPE") == "ENEMY":
 		body.hit(position)
 		armed = false
+		_updateHudUnarmed()
