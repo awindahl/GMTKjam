@@ -14,11 +14,8 @@ func _ready():
 	set_exit(exit)
 	updateHudScore(GameController.score)
 	updateHudLevel(GameController.level)
+	spawnEntities()
 
-#func _process(delta):
-	#detect game over
-	#detect score update
-	
 func panCam():
 	print("new level pos: " + str(get_node(str(level)).get_node("cameraStart").global_position))
 	$Camera2D.global_position = get_node(str(level)).get_node("cameraStart").global_position
@@ -51,27 +48,29 @@ func _on_door4_area_entered(area):
 		print("you win!")
 
 func updateLevel():
+	removeEntities()
 	GameController.score = GameController.score+localScore
 	localScore = 0
 	level = level+1
 	updateHudLevel()
 	GameController.level = level
 	GameController._save()
+	spawnEntities()
 	reset_door(exit)
 	exit = get_node("door"+ str(level+1))
 	set_exit(exit)
 	panCam()
 	movePlayer()
+	
 
 func restartLevel():
-	print("restarting")
+	removeEntities()
 	$Player.global_position = get_node(str(level)).get_node("playerStart").global_position
 	$Player._reset()
 	if gameOver:
 		gameOver = false
-	#respawn enemies
-	#respawn pickups
 	localScore = 0
+	spawnEntities()
 
 func gameOver():
 	gameOver = true
@@ -85,3 +84,17 @@ func updateHudScore(var num = 1):
 	
 func updateHudLevel(var num = 1):
 	hud.addLevel(num)
+
+func removeEntities():
+	for entity in GameController.coinSpawner:
+		for coin in entity:
+			coin.queue_free()
+	for entity in GameController.enemy:
+		for enemy in entity:
+			enemy.queue_free()
+
+func spawnEntities():
+	for entity in GameController.coinSpawner:
+		entity._spawn()
+	for entity in GameController.enemy:
+		entity._spawn()
