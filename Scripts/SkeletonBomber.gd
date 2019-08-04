@@ -48,7 +48,6 @@ func _process(delta):
 		elif linearVel.x > 0:
 			$Sprite.flip_h = false
 		
-		
 		move_and_slide(linearVel * SPEED)
 	
 	elif not alive and not gonnaExplode:
@@ -86,7 +85,7 @@ func die():
 	queue_free()
 
 func _on_Hitbox_body_entered(body):
-	if body.get("TYPE") == "PLAYER":
+	if body.get("TYPE") == "PLAYER" and alive:
 		#body.get_node("HurtSound").play()
 		body._hit(position)
 		gonnaExplode = true

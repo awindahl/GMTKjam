@@ -14,7 +14,6 @@ func _ready():
 	elif not player.get_node("Sprite").flip_h:
 		forward_dir = Vector2(1,0)
 	
-	
 func _process(delta):
 	global_translate(forward_dir * SPEED)
 

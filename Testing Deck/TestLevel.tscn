@@ -23,7 +23,7 @@ shape = SubResource( 1 )
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 editor/display_folded = true
-position = Vector2( 280, -180 )
+position = Vector2( 381, -69 )
 scale = Vector2( 12.23, 0.46 )
 collision_layer = 524289
 collision_mask = 524289
@@ -50,7 +50,7 @@ shape = SubResource( 1 )
 position = Vector2( -240, -50 )
 scale = Vector2( 4, 4 )
 WALK_SPEED = 150
-JUMP_SPEED = 250
+JUMP_SPEED = 300
 armed = true
 
 [node name="SkeletonBomber" parent="." instance=ExtResource( 3 )]
