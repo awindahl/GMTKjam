@@ -27,8 +27,7 @@ func _unhandled_input(event):
 func _on_quitBtn_pressed():
 	menuMusic.inMenu = true
 	menuMusic.get_node("gameMusic").stop()
-	GameController.coinSpawner = []
-	GameController.enemy = []
+	GameController.clearEntityLists()
 	transition.fade_to("res://Scenes/Menu/MainMenu.tscn", 0.9)
 
 func _on_pauseBtn_pressed():

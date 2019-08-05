@@ -1,6 +1,7 @@
 extends Node
 
 func _ready():
+	GameController._load()
 	menuMusic.get_node("menuMusic").play(0)
 	if GameController.gameWon:
 		$Bg2.visible = true

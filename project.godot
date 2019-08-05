@@ -28,7 +28,7 @@ _global_script_class_icons={
 
 config/name="Decrepit Dungeon"
 run/main_scene="res://Scenes/Menu/MainMenu.tscn"
-config/icon="res://icon.png"
+config/icon="res://Assets/swordIcon.png"
 
 [autoload]
 

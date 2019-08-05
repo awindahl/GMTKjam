@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Tileset.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/PushableBlock.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/DestructibleWall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/BlockSpawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/WallSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/skeletonSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/slimeSpawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Sword Pickup.tscn" type="PackedScene" id=6]
@@ -29,15 +29,6 @@ position = Vector2( 512, 370 )
 [node name="playerStart" type="Position2D" parent="."]
 position = Vector2( 120, 540 )
 
-[node name="PushableBlock" parent="." instance=ExtResource( 2 )]
-position = Vector2( 602, 460 )
-
-[node name="DestructibleWall" parent="." instance=ExtResource( 3 )]
-position = Vector2( 740, 380 )
-
-[node name="DestructibleWall2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 838, 339 )
-
 [node name="skeletonSpawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( 790, 360 )
 level = 5
@@ -58,7 +49,7 @@ position = Vector2( 450, 410 )
 level = 5
 
 [node name="coinSpawner3" parent="." instance=ExtResource( 7 )]
-position = Vector2( 840, 260 )
+position = Vector2( 881.9, 313.772 )
 level = 5
 
 [node name="coinSpawner4" parent="." instance=ExtResource( 7 )]
@@ -71,4 +62,16 @@ level = 5
 
 [node name="coinSpawner6" parent="." instance=ExtResource( 7 )]
 position = Vector2( 310, 500 )
+level = 5
+
+[node name="wallSpawner" parent="." instance=ExtResource( 3 )]
+position = Vector2( 740.24, 383.388 )
+level = 5
+
+[node name="wallSpawner2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 838.706, 337.298 )
+level = 5
+
+[node name="blockSpawner" parent="." instance=ExtResource( 2 )]
+position = Vector2( 601.969, 458.111 )
 level = 5

@@ -116,11 +116,13 @@ func control_loop():
 						change_state(CROUCH)
 						
 					if Input.is_action_just_pressed("attack") and attack_timer == 0 and is_on_floor():
+						menuMusic.get_node("hit").play(0)
 						attack_timer = 10
 						change_state(CROUCH_ATTACK)
 				
 				""" General attack function """
 				if Input.is_action_just_pressed("attack") and attack_timer == 0 and is_on_floor():
+					menuMusic.get_node("hit").play(0)
 					attack_timer = 20
 					change_state(ATTACK_FORWARD)
 				if !DOWN and attack_timer == 0:
@@ -136,16 +138,18 @@ func control_loop():
 			
 				if not is_on_floor():
 					""" in-air attacks """
-					menuMusic.get_node("hit").play(0)
 					if Input.is_action_just_pressed("attack") and attack_timer == 0 and !UP and !DOWN:
 							attack_timer = 40
 							change_state(ATTACK_FORWARD)
+							menuMusic.get_node("hit").play(0)
 					if Input.is_action_just_pressed("attack") and attack_timer == 0 and UP and !DOWN:
 							attack_timer = 40
 							change_state(ATTACK_UP)
+							menuMusic.get_node("hit").play(0)
 					if Input.is_action_just_pressed("attack") and attack_timer == 0 and !UP and DOWN:
 							attack_timer = 40
 							change_state(ATTACK_DOWN)
+							menuMusic.get_node("hit").play(0)
 				
 		""" Changes the default state to IDLE """
 		if !RIGHT and !LEFT and !DOWN and !UP and state == RUN_ARMED and attack_timer == 0:

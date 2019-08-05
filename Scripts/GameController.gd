@@ -8,11 +8,12 @@ var gameWon = false
 
 var enemy = []
 var coinSpawner = []
-const filepath = "res://save/game_data.sve"
+var wall = []
+var box = []
+const filepath = "user://game_data.sve"
 
 func _ready():
 	OS.set_window_title("Decrepit Dungeon")
-	_load()
 
 func _save():
 	var file = File.new()
@@ -35,3 +36,9 @@ func deleteSave():
 	var dir = Directory.new()
 	dir.remove(filepath)
 	hasSave = false
+
+func clearEntityLists():
+	enemy = []
+	coinSpawner = []
+	wall = []
+	box = []

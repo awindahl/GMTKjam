@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/Sword Pickup.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/slimeSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/skeletonSpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/DestructibleWall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/WallSpawner.tscn" type="PackedScene" id=6]
 
 [node name="Level 3" type="Node2D"]
 position = Vector2( 0, -70 )
@@ -32,11 +32,12 @@ level = 3
 position = Vector2( 940, 260 )
 level = 3
 
-[node name="DestructibleWall" parent="." instance=ExtResource( 5 )]
-position = Vector2( 980, 480 )
-
 [node name="cameraStart" type="Position2D" parent="."]
 position = Vector2( 512, 300 )
 
 [node name="playerStart" type="Position2D" parent="."]
 position = Vector2( 70, 190 )
+
+[node name="DestructibleWall2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 980.793, 479.855 )
+level = 3

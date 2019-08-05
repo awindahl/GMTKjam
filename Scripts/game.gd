@@ -55,6 +55,7 @@ func _on_door5_body_entered(body):
 		
 func _on_door6_body_entered(body):
 	if body.get("TYPE") == "PLAYER" and exit == $door6:
+		removeEntities()
 		transition.fade_to("res://Scenes/Game Over.tscn", 0.9)
 
 func updateLevel():
@@ -109,14 +110,26 @@ func removeEntities():
 	for entity in GameController.coinSpawner:
 		for coin in entity.get_children():
 			if not str(coin.get_name()).match("Position2D"):
-				coin.queue_free()
+				coin.call_deferred('free') 
 	for entity in GameController.enemy:
 		for enemy in entity.get_children():
 			if not str(enemy.get_name()).match("Position2D") and not str(enemy.get_name()).match("Sprite"):
-				enemy.queue_free()
+				enemy.call_deferred('free') 
+	for entity in GameController.box:
+		for box in entity.get_children():
+			if not str(box.get_name()).match("Sprite"):
+				box.call_deferred('free') 
+	for entity in GameController.wall:
+		for wall in entity.get_children():
+			if not str(wall.get_name()).match("Sprite"):
+				wall.call_deferred('free')
 
 func spawnEntities():
 	for entity in GameController.coinSpawner:
 		entity._spawn()
 	for entity in GameController.enemy:
+		entity._spawn()
+	for entity in GameController.box:
+		entity._spawn()
+	for entity in GameController.wall:
 		entity._spawn()

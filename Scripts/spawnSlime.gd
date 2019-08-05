@@ -11,7 +11,7 @@ func _ready():
 func _spawn():
 	if GameController.level == level:
 		enemy = scene.instance()
-		_add()
+		call_deferred('_add')
 
 func _add():
 	add_child(enemy)

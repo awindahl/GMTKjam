@@ -1,17 +1,18 @@
 extends Node
 
-var coin
+var block
 var scene
 export(int) var level = 1
 
 func _ready():
-	GameController.coinSpawner.append(self)
-	scene = load("res://Scenes/coin.tscn")
+	$Sprite.hide()
+	GameController.box.append(self)
+	scene = load("res://Scenes/PushableBlock.tscn")
 
 func _spawn():
 	if GameController.level == level:
-		coin = scene.instance()
+		block = scene.instance()
 		call_deferred('_add')
 
 func _add():
-	add_child(coin)
+	add_child(block)
